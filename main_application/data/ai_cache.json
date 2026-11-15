@@ -1,0 +1,1290 @@
+{
+  "CVE-2020-11023|jquery|3.3.1": {
+    "cve_id": "CVE-2020-11023",
+    "explanation": "A security flaw exists in the jQuery library used by our web applications that could allow malicious code to be injected into web pages viewed by our customers.",
+    "banking_context_risk": "An attacker could exploit this vulnerability to execute malicious scripts in a user's browser during an active banking session, potentially leading to the theft of session tokens, customer credentials, or the manipulation of displayed account information.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the jQuery package from version 3.3.1 to version 3.5.0 or higher across all affected web applications."
+  },
+  "CVE-2020-11022|jquery|3.3.1": {
+    "cve_id": "CVE-2020-11022",
+    "explanation": "A security flaw exists in the jQuery library used by our web applications that could allow malicious actors to inject unauthorized and harmful scripts into web pages viewed by our users.",
+    "banking_context_risk": "If exploited on our online banking portal, an attacker could potentially hijack customer sessions, steal sensitive financial data, or perform unauthorized actions on behalf of authenticated users, leading to reputational damage and financial loss.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the jQuery package to version 3.5.0 or higher across all affected web applications and verify that all dependent software is updated."
+  },
+  "CVE-2019-11358|jquery|3.3.1": {
+    "cve_id": "CVE-2019-11358",
+    "explanation": "A security flaw exists in the jQuery library that could allow malicious scripts to be injected into web pages viewed by our customers and employees.",
+    "banking_context_risk": "If exploited on our online banking portal or employee intranet, attackers could potentially steal session tokens, hijack user accounts, or capture sensitive customer data and credentials.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the jQuery package to version 3.4.0 or higher, or apply the appropriate vendor patches if using third-party content management systems like Drupal or Backdrop CMS."
+  },
+  "CVE-2021-23337|lodash|4.17.11": {
+    "cve_id": "CVE-2021-23337",
+    "explanation": "A widely used software library called lodash contains a flaw that allows malicious actors to execute arbitrary commands on our underlying servers if user-supplied data is not properly sanitized.",
+    "banking_context_risk": "If exploited in our internal or customer-facing applications, an attacker could potentially gain unauthorized access to our servers, compromise sensitive financial databases, or disrupt core banking operations.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the lodash package to version 4.17.21 or higher across all affected applications and conduct a dependency scan to ensure no vulnerable instances remain."
+  },
+  "CVE-2022-24999|qs|6.5.1": {
+    "cve_id": "CVE-2022-24999",
+    "explanation": "A vulnerability exists in the 'qs' library, which handles data parsing in web applications. This flaw allows attackers to inject malicious properties into the core JavaScript object structure, potentially altering how the application behaves globally.",
+    "banking_context_risk": "If exploited in our customer-facing or internal web portals, attackers could potentially manipulate session data, bypass security controls, or cause denial of service, risking unauthorized access to sensitive financial accounts and customer PII.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'qs' package to version 6.9.7, 6.7.3, 6.5.3, or later where the prototype pollution vulnerability is patched."
+  },
+  "CVE-2021-3749|axios|0.18.0": {
+    "cve_id": "CVE-2021-3749",
+    "explanation": "A flaw exists in the axios software library that handles web communications, allowing malicious actors to send specially crafted inputs that consume excessive server computing resources, potentially causing application crashes.",
+    "banking_context_risk": "If exploited in our customer-facing or internal banking applications, this vulnerability could lead to Denial of Service (DoS), making online banking portals or payment processing systems temporarily unavailable to customers and staff.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the axios package from version 0.18.0 to version 0.21.1 or higher across all affected repositories and applications."
+  },
+  "CVE-2019-10744|lodash|4.17.11": {
+    "cve_id": "CVE-2019-10744",
+    "explanation": "A widely used software library called lodash contains a vulnerability that allows unauthorized individuals to manipulate the internal structure of JavaScript objects. This can lead to unintended modification of application behavior.",
+    "banking_context_risk": "If exploited in our banking applications, this vulnerability could potentially be leveraged by attackers to bypass security controls, manipulate account data, or cause denial-of-service conditions, impacting customer trust and regulatory compliance.",
+    "priority_tier": "Critical",
+    "remediation": "Upgrade the lodash package to version 4.17.12 or higher across all affected repositories and applications."
+  },
+  "CVE-2019-10742|axios|0.18.0": {
+    "cve_id": "CVE-2019-10742",
+    "explanation": "A vulnerability in the widely used axios software library allows an external attacker to cause a Denial of Service, meaning it can crash our applications or make them temporarily unavailable to users.",
+    "banking_context_risk": "If exploited in our customer-facing or internal banking portals, this could disrupt critical services such as online banking, payment processing, and account management, leading to operational downtime and reputational damage.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the axios package from version 0.18.0 to version 0.19.0 or higher across all affected applications and repositories."
+  },
+  "CVE-2021-44906|minimist|0.0.8": {
+    "cve_id": "CVE-2021-44906",
+    "explanation": "A critical vulnerability exists in a software utility library called 'minimist' used by our applications, allowing attackers to manipulate the base structure of JavaScript objects. This can lead to unexpected behavior, application crashes, or potentially unauthorized access.",
+    "banking_context_risk": "If exploited in our customer-facing portals or backend microservices, attackers could tamper with transaction data parameters, cause denial of service affecting online banking availability, or potentially bypass security controls, putting customer financial data at risk.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately update the 'minimist' package to version 1.2.6 or higher across all affected repositories and rebuild dependent applications."
+  },
+  "CVE-2022-24785|moment|2.19.3": {
+    "cve_id": "CVE-2022-24785",
+    "explanation": "A vulnerability exists in the date and time software library our applications use, which could allow an unauthorized user to access files on the server that they should not be able to see.",
+    "banking_context_risk": "If exploited, attackers could potentially read sensitive configuration files or internal system data stored on the server, increasing the risk of unauthorized data exposure or system compromise.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'moment' package to version 2.29.2 or higher across all affected banking applications."
+  },
+  "CVE-2020-8203|lodash|4.17.11": {
+    "cve_id": "CVE-2020-8203",
+    "explanation": "A vulnerability in a widely used software library (lodash) allows attackers to manipulate the fundamental structure of JavaScript objects, potentially leading to unauthorized data modification or application crashes.",
+    "banking_context_risk": "If exploited in our customer-facing portals or internal banking applications, attackers could alter application behavior, bypass security controls, or manipulate financial transaction logic, risking data integrity and regulatory compliance.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the lodash package to version 4.17.21 or higher across all affected applications and repositories."
+  },
+  "CVE-2020-28500|lodash|4.17.11": {
+    "cve_id": "CVE-2020-28500",
+    "explanation": "A flaw exists in a widely used software library called lodash, which helps power our applications. An attacker could exploit this flaw by sending a specially crafted input that forces the system to consume excessive processing power, effectively freezing the application and causing a denial of service.",
+    "banking_context_risk": "If exploited in our customer-facing web applications or internal banking portals, this vulnerability could cause unexpected downtime, temporarily disrupting online banking services and preventing customers or staff from accessing accounts or processing transactions.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the lodash package to version 4.17.21 or later across all affected applications and verify dependency trees to ensure no legacy versions remain."
+  },
+  "CVE-2022-31129|moment|2.19.3": {
+    "cve_id": "CVE-2022-31129",
+    "explanation": "A widely used date and time software library contains a flaw in how it processes certain inputs. If an attacker sends a specially crafted text string, it can cause the system to freeze or slow down dramatically while attempting to process it.",
+    "banking_context_risk": "This flaw can be exploited to launch Denial of Service (DoS) attacks against our customer-facing web applications and internal banking portals. If core systems slow down or crash, it can disrupt online banking services, prevent customers from accessing accounts or executing transactions, and impact business operations.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'moment' package to version 2.9.24 or later (or the latest patched version) across all affected applications and dependencies, followed by rigorous testing of date-parsing functionality."
+  },
+  "CVE-2026-4800|lodash|4.17.11": {
+    "cve_id": "CVE-2026-4800",
+    "explanation": "A widely used software library called lodash contains a security flaw in its template generation feature. This flaw could allow an attacker to inject malicious computer code into our applications by manipulating specific input keys.",
+    "banking_context_risk": "If exploited in our banking applications, an attacker could potentially execute unauthorized code on our servers, leading to unauthorized access to sensitive customer financial data, transaction tampering, or disruption of core banking services.",
+    "priority_tier": "High",
+    "remediation": "Immediately update the lodash package to the latest patched version where this vulnerability is resolved, and scan our software repositories to identify all applications utilizing the vulnerable version 4.17.11."
+  },
+  "CVE-2020-28168|axios|0.18.0": {
+    "cve_id": "CVE-2020-28168",
+    "explanation": "A widely used software component in our applications, Axios, has a security flaw that can allow attackers to trick our servers into making unauthorized requests to internal or external systems.",
+    "banking_context_risk": "If exploited, an attacker could potentially bypass network firewalls to access internal banking services, retrieve sensitive configuration data, or interact with restricted internal APIs, leading to potential data exposure or unauthorized transaction processing.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package from version 0.18.0 to version 0.21.1 or higher where the vulnerability has been patched."
+  },
+  "CVE-2026-25639|axios|0.18.0": {
+    "cve_id": "CVE-2026-25639",
+    "explanation": "A widely used software component called axios contains a flaw that allows attackers to crash applications or services remotely by sending a specially crafted request containing specific internal JavaScript keys.",
+    "banking_context_risk": "If exploited in our customer-facing web applications or internal banking portals, this vulnerability could cause sudden service outages, preventing customers from accessing their accounts and disrupting critical financial transactions.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the axios package to a patched version where the mergeConfig vulnerability is resolved, and conduct a dependency audit across all banking applications."
+  },
+  "CVE-2020-7598|minimist|0.0.8": {
+    "cve_id": "CVE-2020-7598",
+    "explanation": "A vulnerability in a widely used utility package allows attackers to inject or modify properties of JavaScript base objects, potentially leading to unauthorized behavior in applications.",
+    "banking_context_risk": "If exploited in our customer-facing or internal portals, attackers could manipulate application logic, potentially causing denial of service or bypassing certain security controls.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the minimist package to version 1.2.3 or higher across all affected repositories and dependencies."
+  },
+  "CVE-2026-40175|axios|0.18.0": {
+    "cve_id": "CVE-2026-40175",
+    "explanation": "A vulnerability exists in an older software library used by our applications called axios, which could allow an attacker to trick the system into leaking sensitive cloud infrastructure details through manipulated network requests.",
+    "banking_context_risk": "If exploited, attackers could potentially access internal cloud metadata services, revealing sensitive configuration data or credentials used by the bank's applications to interact with cloud providers, increasing the risk of lateral movement within our network.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to a patched, non-vulnerable version (version 0.18.1 or higher, or the latest stable release) and review application code to ensure untrusted user input is not injected into outgoing HTTP headers."
+  },
+  "CVE-2025-13465|lodash|4.17.11": {
+    "cve_id": "CVE-2025-13465",
+    "explanation": "A security flaw exists in a widely used software library called lodash, specifically within functions that handle data structures. This flaw could allow a malicious actor to tamper with the foundational structure of the application, potentially leading to unauthorized data manipulation or service disruptions.",
+    "banking_context_risk": "Because our banking systems process complex customer data, transaction records, and account configurations using libraries like lodash, a prototype pollution vulnerability could be exploited to bypass security controls, corrupt application logic, or cause system crashes, putting sensitive financial data and operational integrity at risk.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the lodash package to the latest patched version where the vulnerability in _.unset and _.omit is resolved."
+  },
+  "CVE-2024-45296|path-to-regexp|0.1.7": {
+    "cve_id": "CVE-2024-45296",
+    "explanation": "A software component used to handle web page addresses contains a flaw that allows specially crafted inputs to cause excessive processing time, potentially freezing the application.",
+    "banking_context_risk": "If exploited against our customer-facing web portals or mobile banking APIs, this flaw could lead to denial of service, rendering online banking services temporarily unavailable to our customers and disrupting internal operations.",
+    "priority_tier": "High",
+    "remediation": "Update the 'path-to-regexp' package to version 0.1.8 or later, or to version 6.3.0 and above, where the regular expression backtracking issue has been resolved."
+  },
+  "CVE-2026-44492|axios|0.18.0": {
+    "cve_id": "CVE-2026-44492",
+    "explanation": "A widely used software component for handling web requests fails to properly recognize certain types of network addresses. This allows network traffic that should be blocked or restricted by security rules to bypass those controls.",
+    "banking_context_risk": "If the bank's internal applications use this vulnerable component to communicate with external APIs, attackers could potentially route traffic around internal proxy controls, exposing internal services, bypassing firewalls, or facilitating server-side request forgery (SSRF) attacks against sensitive banking infrastructure.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'axios' package to the latest patched version where this bypass issue is fully resolved."
+  },
+  "CVE-2024-45590|body-parser|1.18.2": {
+    "cve_id": "CVE-2024-45590",
+    "explanation": "A software component used to process web traffic contains a flaw that can be exploited to crash our applications, making our online services temporarily unavailable.",
+    "banking_context_risk": "If exploited, attackers could disrupt customer-facing web applications and internal APIs, leading to service outages that prevent customers from accessing their accounts or executing transactions.",
+    "priority_tier": "High",
+    "remediation": "Update the body-parser package to the latest patched version across all affected banking applications and verify the fix in a staging environment."
+  },
+  "CVE-2025-62718|axios|0.18.0": {
+    "cve_id": "CVE-2025-62718",
+    "explanation": "A widely used software component for making web requests fails to properly check internal network exclusion rules, allowing external requests to bypass intended network security boundaries.",
+    "banking_context_risk": "If exploited in our backend applications, an attacker could trick internal banking services into interacting with malicious external servers or accessing restricted internal networks, potentially exposing sensitive financial data or internal APIs.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'axios' package to the latest patched version where the hostname normalization bypass is resolved."
+  },
+  "CVE-2026-42033|axios|0.18.0": {
+    "cve_id": "CVE-2026-42033",
+    "explanation": "A security flaw in the axios library allows attackers to manipulate internal JavaScript object structures, potentially altering how the application processes data and communicates with other systems.",
+    "banking_context_risk": "This vulnerability could be exploited to tamper with API responses, exfiltrate sensitive customer or financial data, or hijack outgoing requests, leading to fraudulent transactions, unauthorized account access, and severe regulatory compliance breaches.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the axios package to a patched, secure version (1.0.0 or later, or the vendor-recommended secure release) and conduct dependency scanning across all banking applications utilizing this library."
+  },
+  "CVE-2024-52798|path-to-regexp|0.1.7": {
+    "cve_id": "CVE-2024-52798",
+    "explanation": "A widely used software component for matching web routes contains a flaw that allows attackers to craft special inputs designed to overwhelm the server's processing power, causing the application to freeze or crash.",
+    "banking_context_risk": "If exploited against our customer-facing web applications or internal banking portals, this vulnerability could lead to Denial of Service (DoS), rendering online banking, mobile app APIs, and transaction processing systems temporarily unavailable to our customers and staff.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'path-to-regexp' package from version 0.1.7 to version 0.1.10 or later where the Regular Expression Denial of Service (ReDoS) vulnerability is resolved."
+  },
+  "CVE-2025-27152|axios|0.18.0": {
+    "cve_id": "CVE-2025-27152",
+    "explanation": "A widely used software component called axios, which our applications use to communicate with other computer systems, has a flaw. This flaw could allow an attacker to trick our systems into making unauthorized requests to internal or external servers, potentially exposing sensitive login credentials or internal data.",
+    "banking_context_risk": "If exploited in our banking environment, malicious actors could potentially bypass perimeter defenses to access internal APIs, retrieve sensitive customer data, or intercept internal service credentials, leading to potential data breaches and regulatory non-compliance.",
+    "priority_tier": "High",
+    "remediation": "Immediately upgrade the 'axios' package from version 0.18.0 to the latest patched version where this vulnerability is resolved. Review application logs for any suspicious outbound requests and ensure strict URL validation and egress filtering are enforced."
+  },
+  "CVE-2026-44496|axios|0.18.0": {
+    "cve_id": "CVE-2026-44496",
+    "explanation": "A vulnerability exists in the software library used by our applications to handle web communications, which could allow an attacker to crash our services by sending specially crafted web requests.",
+    "banking_context_risk": "If exploited, this flaw can cause customer-facing banking portals or internal APIs to become unresponsive, leading to service outages, disrupted transactions, and potential financial and reputational damage.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'axios' package to the latest patched version immediately, or apply vendor-recommended input sanitization rules to block malicious cookie injection attempts."
+  },
+  "CVE-2026-42043|axios|0.18.0": {
+    "cve_id": "CVE-2026-42043",
+    "explanation": "A widely used software component called Axios, which handles web communications, has a flaw where security rules meant to block unauthorized network connections can be bypassed using a specific range of loopback network addresses.",
+    "banking_context_risk": "If exploited in our internal applications or customer-facing portals, attackers could potentially route server-side requests around established network boundaries, risking unauthorized access to internal banking microservices and sensitive financial data.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the axios package to the latest patched version where this bypass is resolved, and review internal network routing rules to ensure strict enforcement of proxy bypass policies."
+  },
+  "CVE-2026-44487|axios|0.18.0": {
+    "cve_id": "CVE-2026-44487",
+    "explanation": "A vulnerability exists in the Axios library where sensitive proxy authentication credentials can be accidentally leaked to an external server if a network request is redirected from an insecure HTTP connection to a secure HTTPS connection.",
+    "banking_context_risk": "If our internal applications use this vulnerable library to communicate through proxies, internal credentials or API tokens could be exposed to third-party or malicious origin servers during redirects, potentially compromising our network perimeter or customer data access.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the axios package to a patched version where this redirect behavior is secured, or implement strict redirect policies in application code to prevent credential forwarding across different protocols."
+  },
+  "CVE-2026-42039|axios|0.18.0": {
+    "cve_id": "CVE-2026-42039",
+    "explanation": "A flaw in the axios library allows specially crafted, deeply nested data structures to cause infinite loops, crashing the application.",
+    "banking_context_risk": "If exploited against our customer-facing or internal banking applications, this could lead to unexpected service outages and system unavailability, disrupting transaction processing and online banking services.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the axios package to a patched version where the recursion issue in toFormData is resolved."
+  },
+  "CVE-2024-29041|express|4.16.0": {
+    "cve_id": "CVE-2024-29041",
+    "explanation": "A vulnerability exists in the Express.js framework where attackers can craft malicious URLs that trick the application into redirecting users to external, untrusted websites instead of legitimate internal pages.",
+    "banking_context_risk": "Attackers could exploit this flaw in phishing campaigns targeting bank customers. By sending a link that appears to originate from our official domain, they can redirect unsuspecting users to spoofed login pages to harvest credentials, account numbers, and financial data.",
+    "priority_tier": "Medium",
+    "remediation": "Update the Express package to the latest patched version where the open redirect behavior in malformed URLs is resolved, and implement strict whitelist validation for all application redirect URLs."
+  },
+  "CVE-2026-44486|axios|0.18.0": {
+    "cve_id": "CVE-2026-44486",
+    "explanation": "A security flaw in an older version of the Axios software library causes sensitive authentication credentials (the Proxy-Authorization header) to be accidentally leaked to an external website when a network connection changes from using a secure proxy to a direct connection.",
+    "banking_context_risk": "If internal bank applications or customer-facing portals use this vulnerable library to make API requests through a proxy, sensitive authentication tokens or credentials could be exposed to untrusted external servers during a redirect, potentially leading to unauthorized access to bank systems or customer data.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the axios package to a patched version where this proxy credential leak is resolved, or implement network egress controls to prevent unintended external traffic."
+  },
+  "CVE-2026-4867|path-to-regexp|0.1.7": {
+    "cve_id": "CVE-2026-4867",
+    "explanation": "A widely used software component for handling web page addresses has a flaw that allows malicious actors to freeze or crash our web applications by sending specially crafted web requests.",
+    "banking_context_risk": "If exploited, this vulnerability could cause outages in our online and mobile banking portals, disrupting customer transactions and preventing users from accessing their accounts.",
+    "priority_tier": "High",
+    "remediation": "Update the 'path-to-regexp' package to the latest patched version across all affected Node.js applications and web services."
+  },
+  "CVE-2023-45857|axios|0.18.0": {
+    "cve_id": "CVE-2023-45857",
+    "explanation": "A security flaw exists in the Axios software library used by our applications, which could potentially allow an attacker to trick a user's browser into performing unauthorized actions on our websites without their knowledge.",
+    "banking_context_risk": "If exploited in our online banking or internal portals, malicious actors could potentially trick authenticated customers or employees into executing unintended transactions or modifying account settings, leading to potential fraud or unauthorized data access.",
+    "priority_tier": "Medium",
+    "remediation": "Update the axios package from version 0.18.0 to the latest patched version (1.6.0 or higher) across all affected applications and rebuild the software."
+  },
+  "CVE-2026-42041|axios|0.18.0": {
+    "cve_id": "CVE-2026-42041",
+    "explanation": "A security flaw in the axios library allows attackers to manipulate internal JavaScript object structures, potentially bypassing authentication checks when processing specific request configurations.",
+    "banking_context_risk": "If exploited in our banking applications, unauthorized external actors could bypass security controls and access sensitive customer financial data or execute unauthorized transactions.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to a patched version where the prototype pollution vulnerability in the validation merge strategy is resolved."
+  },
+  "CVE-2026-42035|axios|0.18.0": {
+    "cve_id": "CVE-2026-42035",
+    "explanation": "A security flaw in the axios library allows attackers to manipulate internal JavaScript structures, enabling them to inject unauthorized HTTP headers into web requests sent by our applications.",
+    "banking_context_risk": "This vulnerability could be exploited by malicious actors to bypass security controls, manipulate API requests, or potentially poison caches, risking unauthorized access to internal banking services, transaction manipulation, or exposure of sensitive customer financial data.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the axios package to a patched version where the prototype pollution and header injection vulnerabilities are resolved, and review application code to ensure untrusted input does not influence request headers."
+  },
+  "CVE-2024-47764|cookie|0.3.1": {
+    "cve_id": "CVE-2024-47764",
+    "explanation": "A third-party software component used to handle web cookies improperly validates certain characters in cookie names, paths, and domains, allowing invalid characters to be accepted.",
+    "banking_context_risk": "While the direct risk is low, improper cookie handling could potentially be leveraged in edge-case browser attacks such as session manipulation or cross-site scripting if combined with other vulnerabilities, potentially threatening customer session integrity.",
+    "priority_tier": "Low",
+    "remediation": "Update the 'cookie' package to a patched version (version 0.7.0 or higher) where out-of-bounds characters are properly rejected during parsing and serialization."
+  },
+  "CVE-2026-42036|axios|0.18.0": {
+    "cve_id": "CVE-2026-42036",
+    "explanation": "A widely used software component for making web requests (Axios) has a flaw where it fails to properly enforce limits on the size of downloaded data when using streaming responses.",
+    "banking_context_risk": "If internal bank applications or customer-facing portals use this component to stream data from third-party services, an attacker could manipulate the response to send excessively large files, potentially causing memory exhaustion, application crashes, or denial of service on critical banking systems.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to a patched version where the maxContentLength check is properly enforced for streaming responses, or implement application-level size validation on incoming streams."
+  },
+  "CVE-2025-15284|qs|6.5.1": {
+    "cve_id": "CVE-2025-15284",
+    "explanation": "A widely used software component for processing web data has a flaw where a specially crafted request can trick the system into consuming excessive computer memory, causing the application to crash.",
+    "banking_context_risk": "If exploited against our customer-facing web applications or internal APIs, this vulnerability could lead to unexpected service outages, disrupting online banking availability and transaction processing.",
+    "priority_tier": "Low",
+    "remediation": "Upgrade the 'qs' package to a patched version where the arrayLimit bypass is resolved."
+  },
+  "CVE-2026-42038|axios|0.18.0": {
+    "cve_id": "CVE-2026-42038",
+    "explanation": "A security flaw in the axios library allows attackers to bypass network restrictions meant to block access to internal systems, potentially tricking the application into connecting to unauthorized internal servers.",
+    "banking_context_risk": "If exploited in our banking applications, attackers could use Server-Side Request Forgery (SSRF) to interact with internal bank services, private APIs, or sensitive backend databases that should never be reachable from the public internet.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to the latest patched version where the no_proxy IP alias bypass is resolved."
+  },
+  "CVE-2024-43800|serve-static|1.13.0": {
+    "cve_id": "CVE-2024-43800",
+    "explanation": "A software component used to serve web pages contains a flaw that allows malicious code to be injected into web templates, potentially executing unauthorized scripts in a user's browser.",
+    "banking_context_risk": "If exploited on a public-facing banking portal, attackers could hijack customer browser sessions, display fraudulent phishing prompts, or steal session tokens, compromising customer trust and data privacy.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'serve-static' package to a patched version where the template injection vulnerability is resolved."
+  },
+  "CVE-2026-2950|lodash|4.17.11": {
+    "cve_id": "CVE-2026-2950",
+    "explanation": "A widely used software library called lodash has a security flaw that allows malicious actors to manipulate the fundamental structure of JavaScript objects. By exploiting functions used to delete or omit data, an attacker could potentially inject unauthorized properties into the application's memory.",
+    "banking_context_risk": "If exploited in our customer-facing or internal banking applications, this vulnerability could lead to unexpected application behavior, logic bypasses, or potential data manipulation, risking the integrity of financial transactions and sensitive customer records.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the lodash package to the latest patched version where the prototype pollution vulnerability in _.unset and _.omit has been resolved."
+  },
+  "CVE-2026-42034|axios|0.18.0": {
+    "cve_id": "CVE-2026-42034",
+    "explanation": "A flaw in the axios software library allows users to upload files larger than normally permitted under specific configuration settings.",
+    "banking_context_risk": "If our internal applications use this library to handle file uploads (such as documents or transaction payloads), malicious users could potentially bypass file size limits to exhaust server storage or memory resources, causing application slowdowns or service disruptions.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to a patched version where the maxBodyLength restriction is properly enforced during streamed uploads."
+  },
+  "CVE-2024-43796|express|4.16.0": {
+    "cve_id": "CVE-2024-43796",
+    "explanation": "A vulnerability in the Express web framework allows an attacker to trick the system into running malicious scripts in a user's browser during a web page redirect.",
+    "banking_context_risk": "If exploited on our banking portal, an attacker could potentially hijack customer browser sessions, leading to unauthorized actions or theft of sensitive financial session data.",
+    "priority_tier": "Medium",
+    "remediation": "Update the express package to a patched version (typically 4.19.2 or later, or the latest available stable release) where the response.redirect() XSS vector has been resolved."
+  },
+  "CVE-2024-43799|send|0.16.0": {
+    "cve_id": "CVE-2024-43799",
+    "explanation": "A vulnerability in the 'send' software library allows attackers to inject malicious code into web pages, potentially executing scripts in a user's browser.",
+    "banking_context_risk": "If exploited on customer-facing banking portals, attackers could potentially hijack user sessions, steal session tokens, or display fraudulent content to customers, risking brand reputation and regulatory compliance.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'send' package to the latest patched version where the template injection flaw is resolved."
+  },
+  "CVE-2026-44490|axios|0.18.0": {
+    "cve_id": "CVE-2026-44490",
+    "explanation": "A vulnerability exists in the software library 'axios' (version 0.18.0) used by our applications to make web requests. This flaw allows malicious actors to manipulate data processing, potentially causing application crashes or injecting unauthorized HTTP headers.",
+    "banking_context_risk": "If exploited in our banking portals or backend microservices, this vulnerability could cause sudden service outages for customers trying to access their accounts, or allow attackers to tamper with secure communication headers, increasing the risk of session hijacking or data interception.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'axios' package to the latest patched version (v1.7.4 or higher) across all affected codebases and verify that dependency scanning tools reflect the updated version."
+  },
+  "CVE-2026-42042|axios|0.18.0": {
+    "cve_id": "CVE-2026-42042",
+    "explanation": "A vulnerability exists in the Axios software library that could allow unauthorized parties to intercept security tokens used to prevent Cross-Site Request Forgery attacks, potentially exposing sensitive session data if exploited in combination with other weaknesses.",
+    "banking_context_risk": "For a bank, this means malicious actors could potentially leak internal security tokens used in web applications. While it requires a specific combination of conditions (prototype pollution), it could compromise customer sessions, leading to unauthorized access to banking portals or internal dashboards.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to a patched version (version 1.0.0 or higher, or the latest secure release) where the prototype pollution gadget and XSRF leakage issue are resolved."
+  },
+  "CVE-2026-12590|body-parser|1.18.2": {
+    "cve_id": "CVE-2026-12590",
+    "explanation": "A component used to process incoming web requests contains a flaw where providing a specific invalid configuration setting accidentally deactivates the protection mechanism meant to limit data size.",
+    "banking_context_risk": "If exploited by an attacker sending excessively large data payloads, it could exhaust server memory and cause banking applications to crash, resulting in temporary service unavailability for customers.",
+    "priority_tier": "Low",
+    "remediation": "Update the body-parser package to a patched version where invalid limit values are properly rejected instead of silently disabling size enforcement."
+  },
+  "CVE-2026-42040|axios|0.18.0": {
+    "cve_id": "CVE-2026-42040",
+    "explanation": "A minor software flaw in the Axios library could allow specially crafted input to manipulate URL parameters using hidden characters (null bytes).",
+    "banking_context_risk": "Since the severity is low, the risk of direct exploitation leading to financial loss or data theft is minimal. However, unpatched minor vulnerabilities can sometimes be chained with other flaws to bypass input validation in our internal or customer-facing web applications.",
+    "priority_tier": "Low",
+    "remediation": "Upgrade the axios package to a patched version beyond 0.18.0 where this reverse-encoding issue is resolved."
+  },
+  "GHSA-7q8q-rj6j-mhjq|axios|0.18.0": {
+    "cve_id": "GHSA-7q8q-rj6j-mhjq",
+    "explanation": "A vulnerability in the axios library allows attackers to manipulate internal JavaScript object structures, potentially altering how the application behaves when processing complex configuration data.",
+    "banking_context_risk": "If exploited in our banking applications, this could lead to unexpected application behavior, data corruption, or potential logic bypasses in services that handle untrusted input, risking transaction integrity and customer data security.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to version 0.18.1 or higher, where the prototype pollution vulnerability has been patched."
+  },
+  "GHSA-mmx7-hfxf-jppx|axios|0.18.0": {
+    "cve_id": "GHSA-mmx7-hfxf-jppx",
+    "explanation": "A security flaw exists in the software library Axios, which our applications use to communicate with other systems over the network. This flaw allows malicious actors to manipulate the internal structure of JavaScript objects, potentially altering how outgoing requests are constructed.",
+    "banking_context_risk": "If exploited in our banking applications, attackers could potentially tamper with API requests, leading to unintended data exposure, unauthorized actions within backend services, or disruption of financial transaction pipelines.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to version 0.18.1 or higher, where this prototype pollution vulnerability has been resolved."
+  },
+  "CVE-2018-18074|requests|2.19.1": {
+    "cve_id": "CVE-2018-18074",
+    "explanation": "A widely used software tool for making web requests improperly handles user credentials, potentially allowing sensitive authentication data to be leaked or mishandled when communicating with external servers.",
+    "banking_context_risk": "If internal bank applications or customer-facing services use this vulnerable software component to integrate with third-party APIs or vendor systems, sensitive credentials such as API keys or authorization tokens could be inadvertently exposed to unauthorized entities.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'requests' library to version 2.20.0 or higher across all affected applications and environments."
+  },
+  "CVE-2023-4863|pillow|6.2.0": {
+    "cve_id": "CVE-2023-4863",
+    "explanation": "A critical security flaw exists in the image processing library used by our applications, specifically in how it handles WebP image files. An attacker could exploit this by tricking a system into processing a maliciously crafted image, potentially allowing them to crash the application or execute arbitrary code on our servers.",
+    "banking_context_risk": "If an attacker exploits this on customer-facing or internal banking portals\u2014such as document upload features for loan applications or mobile check deposits\u2014they could compromise bank servers, access sensitive customer financial data, or disrupt critical banking operations.",
+    "priority_tier": "High",
+    "remediation": "Immediately update the 'pillow' package to version 10.0.0 or higher across all affected applications and services where image processing is utilized."
+  },
+  "CVE-2019-14322|werkzeug|0.14.1": {
+    "cve_id": "CVE-2019-14322",
+    "explanation": "A security flaw in the Werkzeug web utility library allows unauthorized users to bypass security controls and access sensitive files stored on the server by manipulating file paths in web requests.",
+    "banking_context_risk": "If exploited in our internal or customer-facing applications, malicious actors could potentially read sensitive system files, source code, or configuration data, leading to unauthorized information disclosure and potential compromise of customer banking data.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Werkzeug package to version 0.15.5 or higher, where this path traversal vulnerability has been patched."
+  },
+  "CVE-2020-14343|pyyaml|5.1": {
+    "cve_id": "CVE-2020-14343",
+    "explanation": "A critical security flaw exists in the PyYAML software library that allows malicious actors to execute arbitrary code on our servers simply by tricking the system into processing specially crafted data files.",
+    "banking_context_risk": "If exploited in our backend processing systems, attackers could gain complete control of vulnerable servers, potentially compromising sensitive customer financial records, transaction histories, and internal bank operations.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the PyYAML package to version 5.2 or later, and review application code to ensure that untrusted data is never loaded using unsafe YAML loading functions (such as yaml.load). Use yaml.safe_load instead."
+  },
+  "CVE-2019-20477|pyyaml|5.1": {
+    "cve_id": "CVE-2019-20477",
+    "explanation": "A critical flaw exists in the PyYAML library that allows malicious actors to execute arbitrary code on our servers simply by tricking the system into processing untrusted data files.",
+    "banking_context_risk": "If exploited in our internal or customer-facing applications, an attacker could gain full control of the affected server, potentially leading to unauthorized access to sensitive financial records, customer personally identifiable information (PII), and core banking transaction systems.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the PyYAML package to version 5.2 or later, and ensure that untrusted data is loaded using safe loading methods (such as yaml.safe_load) across all application codebases."
+  },
+  "CVE-2020-1747|pyyaml|5.1": {
+    "cve_id": "CVE-2020-1747",
+    "explanation": "A critical security flaw exists in the PyYAML software library that allows malicious actors to execute arbitrary code on our servers simply by tricking the system into processing a specially crafted data file.",
+    "banking_context_risk": "If exploited in our banking applications, an attacker could gain full control of internal servers, potentially compromising sensitive customer financial data, transaction processing systems, and regulatory compliance infrastructure.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the PyYAML package to version 5.2 or higher, and review all application logs for unauthorized execution attempts or anomalous data processing activities."
+  },
+  "CVE-2020-5311|pillow|6.2.0": {
+    "cve_id": "CVE-2020-5311",
+    "explanation": "A critical software flaw exists in the image-processing library used by our applications, allowing malicious actors to crash systems or potentially execute unauthorized code by uploading a specially crafted image file.",
+    "banking_context_risk": "If an attacker exploits this on our customer-facing portals or internal document-processing systems (e.g., mobile check deposit or KYC document upload), they could compromise core banking servers, leading to service outages or potential unauthorized access to sensitive customer data.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the Pillow package to version 6.2.1 or higher across all affected applications and environments."
+  },
+  "CVE-2021-27922|pillow|6.2.0": {
+    "cve_id": "CVE-2021-27922",
+    "explanation": "A vulnerability exists in the Pillow software library that allows attackers to cause excessive resource consumption, potentially freezing or crashing applications that process specially crafted image files.",
+    "banking_context_risk": "If our customer-facing portals, mobile apps, or internal document processing systems use this library to handle user-uploaded images, an attacker could launch a Denial of Service (DoS) attack, making banking services unavailable and disrupting operations.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version (8.1.1 or later) where the resource consumption flaw is resolved."
+  },
+  "CVE-2020-5312|pillow|6.2.0": {
+    "cve_id": "CVE-2020-5312",
+    "explanation": "A critical software flaw exists in the image processing library (Pillow) used by our applications. Specifically, handling a maliciously crafted image file can cause the system to crash or allow attackers to execute unauthorized code on our servers.",
+    "banking_context_risk": "If our customer-facing applications (such as mobile banking document uploads or online loan applications) process user-submitted images using this vulnerable library, attackers could compromise our internal servers, potentially leading to unauthorized access to sensitive financial records and customer Personally Identifiable Information (PII).",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the Pillow package to version 7.0.0 or higher across all affected applications and environments."
+  },
+  "CVE-2018-1000656|flask|0.12.2": {
+    "cve_id": "CVE-2018-1000656",
+    "explanation": "A security flaw exists in the Flask web framework that allows malicious users to crash application services by sending specially crafted data that the system fails to process correctly.",
+    "banking_context_risk": "If exploited, this vulnerability could cause bank customer-facing web applications or internal APIs to experience sudden outages, disrupting online banking services, account access, and payment processing.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Flask package to version 0.12.3 or higher, or apply the official vendor patch to correct JSON encoding and prevent denial of service conditions."
+  },
+  "CVE-2022-22817|pillow|6.2.0": {
+    "cve_id": "CVE-2022-22817",
+    "explanation": "A critical security flaw exists in the Pillow software library that allows malicious actors to execute unauthorized code on our servers by tricking the system into processing a specially crafted image file.",
+    "banking_context_risk": "If exploited in our customer-facing or internal applications that handle document uploads (such as loan applications, ID verification, or check scanning), attackers could gain full control of the affected server, potentially leading to the theft of sensitive customer PII, financial records, or unauthorized transactions.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the Pillow library to version 9.0.0 or later across all applications and environments where it is deployed."
+  },
+  "CVE-2021-34552|pillow|6.2.0": {
+    "cve_id": "CVE-2021-34552",
+    "explanation": "A critical flaw in the Pillow image processing software allows attackers to crash systems or potentially execute malicious code by tricking the system into handling a specially crafted image file.",
+    "banking_context_risk": "If our customer-facing or internal banking applications process user-uploaded documents, statements, or images using this vulnerable library, an attacker could exploit it to compromise our servers, potentially leading to unauthorized access to sensitive financial records or customer data.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the Pillow library to a patched version (8.3.0 or later) across all affected environments and restrict image processing services to isolated, sandboxed containers."
+  },
+  "CVE-2019-10906|jinja2|2.10": {
+    "cve_id": "CVE-2019-10906",
+    "explanation": "A security flaw in the Jinja2 template software allows malicious users to bypass security controls (sandbox) using crafted string formatting, potentially letting them run unauthorized code on the server.",
+    "banking_context_risk": "If exploited in our customer-facing web applications or internal portals, an attacker could execute arbitrary code, leading to unauthorized access to sensitive financial records, customer PII, or internal banking systems.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Jinja2 package to version 2.10.1 or higher immediately across all affected environments."
+  },
+  "CVE-2024-34069|werkzeug|0.14.1": {
+    "cve_id": "CVE-2024-34069",
+    "explanation": "A security flaw exists in the software component Werkzeug that allows an external attacker to execute arbitrary code on our servers if they can manipulate the domain name our application interacts with.",
+    "banking_context_risk": "If exploited in our internal or customer-facing applications, an attacker could gain unauthorized access to core banking systems, compromise sensitive financial transactions, and exfiltrate confidential customer data.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the werkzeug package to the latest patched version immediately, and ensure the interactive debugging tool is strictly disabled in all production and staging environments."
+  },
+  "CVE-2021-23437|pillow|6.2.0": {
+    "cve_id": "CVE-2021-23437",
+    "explanation": "A flaw exists in an image processing software library we use, which allows attackers to crash our applications by supplying specially crafted images that consume excessive system resources.",
+    "banking_context_risk": "If exploited against customer-facing portals or mobile app backends that process uploaded documents (such as checks, IDs, or profile pictures), this could lead to denial of service, rendering banking services temporarily unavailable to our customers.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to version 8.3.2 or higher across all affected applications and environments."
+  },
+  "CVE-2021-27921|pillow|6.2.0": {
+    "cve_id": "CVE-2021-27921",
+    "explanation": "A vulnerability exists in the Pillow software library that allows attackers to crash bank applications by sending specially crafted image files, leading to excessive resource consumption.",
+    "banking_context_risk": "If an attacker floods our customer-facing web portals or mobile banking apps with malicious images (such as fraudulent document uploads or profile pictures), it can cause the application to freeze or crash. This results in service downtime for customers and potential operational disruption.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the pillow package from version 6.2.0 to a patched version (8.1.1 or higher) across all affected applications and container images."
+  },
+  "CVE-2022-24303|pillow|6.2.0": {
+    "cve_id": "CVE-2022-24303",
+    "explanation": "A security flaw exists in the image-processing software used by our applications that allows unauthorized users to access files and directories outside of the intended folder.",
+    "banking_context_risk": "If exploited in our customer-facing or internal applications, attackers could potentially read sensitive system files, configuration data, or documents uploaded by banking customers.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the Pillow package to a patched version (9.0.1 or later) across all affected banking applications and scan for any unauthorized access attempts in server logs."
+  },
+  "CVE-2021-25287|pillow|6.2.0": {
+    "cve_id": "CVE-2021-25287",
+    "explanation": "A software flaw in the image-processing library allows malicious image files to crash applications or potentially leak sensitive memory contents.",
+    "banking_context_risk": "If our customer-facing or internal document management systems process uploaded documents or images using this vulnerable library, an attacker could exploit it to cause denial of service or access confidential customer records and financial data.",
+    "priority_tier": "Critical",
+    "remediation": "Upgrade the Pillow package to version 8.1.1 or later across all affected applications and environments."
+  },
+  "CVE-2021-27923|pillow|6.2.0": {
+    "cve_id": "CVE-2021-27923",
+    "explanation": "A vulnerability in the image-processing software used by our applications allows an attacker to crash our systems by sending specially crafted image files, resulting in a denial of service.",
+    "banking_context_risk": "If exploited against customer-facing or internal banking portals that process user-uploaded documents (like ID scans or checks), it could cause application outages, preventing customers and staff from accessing critical banking services.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version (8.1.1 or later) across all affected applications and ensure input validation is applied to all uploaded image files."
+  },
+  "CVE-2020-5313|pillow|6.2.0": {
+    "cve_id": "CVE-2020-5313",
+    "explanation": "A vulnerability in the image-processing software library Pillow allows attackers to read unauthorized memory areas when processing maliciously crafted image files.",
+    "banking_context_risk": "If our web portals or mobile applications process customer-uploaded images (such as profile pictures, document scans, or check images) using this vulnerable library, an attacker could potentially crash the application or extract sensitive information from memory, such as session tokens or personal data.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to version 6.2.1 or higher across all affected applications and environments."
+  },
+  "CVE-2020-11538|pillow|6.2.0": {
+    "cve_id": "CVE-2020-11538",
+    "explanation": "A software flaw in the Pillow library allows attackers to trick the system into reading memory it shouldn't access when processing certain image files.",
+    "banking_context_risk": "If our applications process customer-uploaded documents or images (like check deposits or ID verifications) using this vulnerable library, an attacker could potentially crash the service or extract sensitive data from server memory.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version (7.1.0 or higher) across all affected banking applications and services."
+  },
+  "CVE-2021-25289|pillow|6.2.0": {
+    "cve_id": "CVE-2021-25289",
+    "explanation": "A critical software defect exists in an image processing library used by our applications, allowing an attacker to corrupt computer memory by supplying a specially crafted image file.",
+    "banking_context_risk": "If exploited in our customer-facing or internal portals where users upload documents or images, an attacker could execute arbitrary code, potentially compromising sensitive customer financial data, authentication tokens, or core banking infrastructure.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the Pillow package to a patched version (8.1.1 or higher) across all affected environments and scan repositories to ensure no vulnerable dependencies remain."
+  },
+  "CVE-2020-28493|jinja2|2.10": {
+    "cve_id": "CVE-2020-28493",
+    "explanation": "A flaw in the Jinja2 template engine could allow an attacker to send specially crafted data that causes the system to consume excessive CPU resources, effectively freezing the application.",
+    "banking_context_risk": "If exploited against customer-facing web portals or internal banking applications that render dynamic content, this vulnerability could cause service outages, preventing customers from accessing accounts or processing transactions.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Jinja2 package to version 2.11.3 or higher, where the regular expression issue has been resolved."
+  },
+  "CVE-2021-25288|pillow|6.2.0": {
+    "cve_id": "CVE-2021-25288",
+    "explanation": "A security flaw exists in the software library used by our applications to process images, which could allow an attacker to trick the system into reading sensitive data from memory.",
+    "banking_context_risk": "If exploited in our customer-facing or document-processing portals (such as loan applications or digital check deposits), attackers could potentially access confidential customer data or cause system crashes, leading to service disruption.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the Pillow library to version 8.1.1 or higher across all affected applications and environments."
+  },
+  "CVE-2021-28676|pillow|6.2.0": {
+    "cve_id": "CVE-2021-28676",
+    "explanation": "A vulnerability exists in the Pillow software library that can cause systems to freeze in an endless loop while processing specially crafted image files.",
+    "banking_context_risk": "If an attacker uploads a malicious image to customer-facing web portals or mobile banking apps (such as profile pictures or document uploads), it can crash the server processing it, leading to a denial of service for online banking services.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version (8.2.0 or higher) where the infinite loop issue is resolved."
+  },
+  "CVE-2019-14806|werkzeug|0.14.1": {
+    "cve_id": "CVE-2019-14806",
+    "explanation": "A component used in our web applications generates predictable security tokens due to a lack of randomness. Attackers could potentially guess or forge these tokens.",
+    "banking_context_risk": "If exploited in our customer-facing or internal portals, attackers could hijack active user sessions, potentially gaining unauthorized access to sensitive account information or transactional systems.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Werkzeug package to version 0.15.3 or later, where this insufficient entropy vulnerability has been resolved."
+  },
+  "CVE-2020-5310|pillow|6.2.0": {
+    "cve_id": "CVE-2020-5310",
+    "explanation": "A critical software defect exists in the image-processing library Pillow, allowing an attacker to cause an integer overflow by manipulating image data.",
+    "banking_context_risk": "If our banking applications process maliciously crafted images uploaded by customers (such as profile pictures, scanned checks, or documents), an attacker could crash the system, execute arbitrary code, or potentially gain unauthorized access to internal systems and sensitive customer financial data.",
+    "priority_tier": "High",
+    "remediation": "Immediately upgrade the Pillow package to version 6.2.1 or higher across all affected applications and environments."
+  },
+  "CVE-2021-25290|pillow|6.2.0": {
+    "cve_id": "CVE-2021-25290",
+    "explanation": "A security flaw exists in the software library used to process images, which could allow an attacker to crash systems or potentially execute unauthorized code by tricking the system into processing a maliciously crafted image.",
+    "banking_context_risk": "If our banking applications process customer-uploaded images\u2014such as scanned checks, identity documents for KYC verification, or profile pictures\u2014an attacker could exploit this vulnerability to compromise our servers, potentially leading to unauthorized access to sensitive customer financial data or service downtime.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to version 8.1.1 or higher, where this vulnerability has been patched."
+  },
+  "CVE-2021-28677|pillow|6.2.0": {
+    "cve_id": "CVE-2021-28677",
+    "explanation": "A flaw in the Pillow software library allows attackers to cause excessive resource consumption, which can crash the application processing images.",
+    "banking_context_risk": "If our customer-facing or document-processing systems use this library to handle uploaded documents (such as checks, ID scans, or loan forms), an attacker could exploit this vulnerability to trigger a denial of service, rendering critical banking applications temporarily unavailable.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to the latest patched version (8.2.0 or higher) across all affected banking applications and environments."
+  },
+  "CVE-2023-50447|pillow|6.2.0": {
+    "cve_id": "CVE-2023-50447",
+    "explanation": "A critical security flaw exists in an older software library used for handling image files (Pillow version 6.2.0). This vulnerability allows an attacker to execute malicious code on our systems simply by tricking the application into processing a specially crafted image file.",
+    "banking_context_risk": "If exploited in our banking environment\u2014such as through customer profile picture uploads, scanned check processing, or document management portals\u2014an attacker could gain unauthorized control over underlying servers. This could lead to the theft of sensitive customer financial data, unauthorized transactions, or operational disruption.",
+    "priority_tier": "High",
+    "remediation": "Immediately upgrade the Pillow library to the latest patched version (10.0.1 or higher) across all affected applications, and temporarily restrict or sanitize image upload features until patching is complete."
+  },
+  "CVE-2023-32681|requests|2.19.1": {
+    "cve_id": "CVE-2023-32681",
+    "explanation": "A software flaw in the widely used 'requests' tool can accidentally leak sensitive proxy authentication credentials to external servers when redirecting network traffic.",
+    "banking_context_risk": "If internal bank applications use this vulnerable library to communicate through web proxies, credentials granting access to secure internal or external systems could be inadvertently exposed to malicious third parties during an HTTP redirect.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'requests' Python package to version 2.31.0 or higher where the proxy authorization header leak has been resolved."
+  },
+  "CVE-2019-19911|pillow|6.2.0": {
+    "cve_id": "CVE-2019-19911",
+    "explanation": "A vulnerability in the image-processing software used by our applications allows an attacker to cause excessive resource consumption, potentially freezing the system.",
+    "banking_context_risk": "If exploited against our customer-facing portals or document-upload systems where users submit images (such as check deposits or ID verifications), it could lead to denial of service, rendering our digital banking services temporarily unavailable to customers.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version (7.0.0 or later) across all affected internal and customer-facing banking applications."
+  },
+  "CVE-2019-1010083|flask|0.12.2": {
+    "cve_id": "CVE-2019-1010083",
+    "explanation": "A vulnerability in the Flask framework allows attackers to consume excessive server memory by sending specially crafted requests, leading to application crashes.",
+    "banking_context_risk": "If internal or customer-facing banking applications built on this vulnerable Flask version are targeted, they could experience sudden outages, disrupting online banking services, payment processing, and internal operations.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Flask package to a patched version (version 0.12.3 or higher, or the latest stable release) where the memory consumption issue is resolved."
+  },
+  "CVE-2022-22815|pillow|6.2.0": {
+    "cve_id": "CVE-2022-22815",
+    "explanation": "A software flaw in the Pillow library exists where certain image files are not initialized properly, which can allow attackers to manipulate system memory or cause application crashes.",
+    "banking_context_risk": "If our customer-facing or internal applications process malicious images uploaded by users (such as scanned checks, identity documents, or profile pictures), this vulnerability could be exploited to crash services or potentially execute unauthorized code, threatening system availability and data integrity.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to version 9.0.0 or higher where this initialization issue has been resolved."
+  },
+  "CVE-2020-35654|pillow|6.2.0": {
+    "cve_id": "CVE-2020-35654",
+    "explanation": "A critical software defect in an image-processing library allows an attacker to corrupt computer memory by crafting a malicious image file.",
+    "banking_context_risk": "If our customer-facing or internal applications process malicious documents or images uploaded by users, an attacker could potentially crash our systems or execute unauthorized code, threatening customer data confidentiality and system availability.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package from version 6.2.0 to the latest patched version (8.1.0 or higher) across all affected applications and environments."
+  },
+  "CVE-2021-25293|pillow|6.2.0": {
+    "cve_id": "CVE-2021-25293",
+    "explanation": "A software flaw in the image processing library allows attackers to read sensitive memory by tricking the system into processing a maliciously crafted image file.",
+    "banking_context_risk": "If our customer-facing portals, mobile apps, or document processing systems use this library to handle uploaded documents like checks or IDs, an attacker could potentially expose internal system memory, leading to data leaks or service disruptions.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to version 8.1.1 or higher across all affected applications and environments."
+  },
+  "CVE-2020-35653|pillow|6.2.0": {
+    "cve_id": "CVE-2020-35653",
+    "explanation": "A flaw exists in an image-processing software library called Pillow, which allows attackers to trick the system into reading unauthorized memory areas when handling specific malicious image files.",
+    "banking_context_risk": "If the bank's applications use this library to process user-uploaded documents, such as scanned checks, IDs for KYC verification, or profile pictures, an attacker could potentially crash the application or extract sensitive system memory data.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to version 8.1.0 or higher where the vulnerability is patched, and audit applications to ensure untrusted images are handled securely."
+  },
+  "CVE-2022-22816|pillow|6.2.0": {
+    "cve_id": "CVE-2022-22816",
+    "explanation": "A software flaw in the Pillow image-processing library allows an attacker to trick the system into reading memory it shouldn't have access to when processing a specially crafted image file.",
+    "banking_context_risk": "If our banking applications process user-uploaded documents or images (such as check scans, profile pictures, or ID verification uploads) using this vulnerable library, an attacker could potentially crash our services or expose sensitive memory contents, leading to operational disruption or data leakage.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to version 9.0.0 or higher across all affected applications and server environments."
+  },
+  "CVE-2021-25291|pillow|6.2.0": {
+    "cve_id": "CVE-2021-25291",
+    "explanation": "A software flaw in the Pillow library allows attackers to trick the system into reading memory it shouldn't access when processing manipulated image files.",
+    "banking_context_risk": "If our customer-facing or internal banking applications use this library to process uploaded user documents (like ID scans or check images), an attacker could exploit this to crash services or potentially steal sensitive data from system memory.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version (8.1.1 or later) where the out-of-bounds read vulnerability has been resolved."
+  },
+  "CVE-2020-10177|pillow|6.2.0": {
+    "cve_id": "CVE-2020-10177",
+    "explanation": "A software flaw in the image processing library Pillow allows an attacker to read memory data they should not have access to by supplying a specially crafted image file.",
+    "banking_context_risk": "If our customer-facing or internal applications process user-uploaded images (such as profile pictures, scanned check deposits, or identity verification documents), an attacker could exploit this vulnerability to crash systems or potentially leak sensitive internal memory data.",
+    "priority_tier": "Medium",
+    "remediation": "Update the Pillow library to version 7.1.0 or higher across all affected bank applications and environments."
+  },
+  "CVE-2023-25577|werkzeug|0.14.1": {
+    "cve_id": "CVE-2023-25577",
+    "explanation": "A flaw in the software allows attackers to send specially crafted web requests that consume excessive server memory and processing power, potentially causing our applications to crash or become unresponsive.",
+    "banking_context_risk": "If exploited against our customer-facing web applications or internal banking portals, this vulnerability could lead to Denial of Service (DoS), disrupting critical banking operations, online account access, and transaction processing.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the werkzeug package to the latest patched version where this multipart form parsing issue is resolved."
+  },
+  "CVE-2020-10994|pillow|6.2.0": {
+    "cve_id": "CVE-2020-10994",
+    "explanation": "A software flaw in the image processing library Pillow allows an attacker to trick the system into reading memory it should not access by providing a specially crafted image file.",
+    "banking_context_risk": "If our web portals, mobile apps, or document processing systems use this vulnerable software to handle customer-uploaded documents (such as ID scans or check images), an attacker could potentially exploit it to crash services or extract sensitive system memory contents.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to version 7.1.0 or higher across all affected applications and environments."
+  },
+  "CVE-2023-30861|flask|0.12.2": {
+    "cve_id": "CVE-2023-30861",
+    "explanation": "A security oversight in the web framework allows sensitive session cookies to be cached improperly by intermediate proxies or browsers, potentially exposing user login sessions to unauthorized parties.",
+    "banking_context_risk": "If exploited, attackers could gain unauthorized access to authenticated banking sessions, leading to potential account takeovers, fraudulent transactions, and severe regulatory and reputational damage.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Flask package to a patched version where the Vary: Cookie header is properly implemented, and ensure proper cache-control headers are enforced on all sensitive banking endpoints."
+  },
+  "CVE-2021-25292|pillow|6.2.0": {
+    "cve_id": "CVE-2021-25292",
+    "explanation": "A vulnerability in the Pillow image processing library allows attackers to craft a specific input that causes the system to consume excessive CPU resources when processing images, leading to a potential crash or service outage.",
+    "banking_context_risk": "If our customer-facing or internal applications use this vulnerable library to process uploaded documents (such as ID scans for KYC or check images), an attacker could flood the system with malicious images to disrupt banking services and prevent legitimate customers from accessing their accounts.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to version 8.1.1 or higher to patch the regular expression vulnerability."
+  },
+  "CVE-2022-45198|pillow|6.2.0": {
+    "cve_id": "CVE-2022-45198",
+    "explanation": "A vulnerability exists in the Pillow software library that allows attackers to craft a malicious image file. When the bank's systems attempt to process this image, it can consume a disproportionate amount of memory and system resources.",
+    "banking_context_risk": "If bad actors exploit this against customer-facing or internal applications that handle document uploads (like ID verification or check scanning), it could lead to denial of service, crashing bank servers and disrupting critical financial operations.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version (version 9.0.0 or higher is recommended) across all affected banking applications and services."
+  },
+  "CVE-2020-35655|pillow|6.2.0": {
+    "cve_id": "CVE-2020-35655",
+    "explanation": "A software flaw in the Pillow image-processing library allows an attacker to trick the system into reading memory it shouldn't access when processing a maliciously crafted image file.",
+    "banking_context_risk": "If our customer portals, mobile apps, or document processing systems use this vulnerable library to handle uploaded images (such as profile pictures, scanned checks, or identity documents), an attacker could potentially crash the service or extract sensitive data from system memory.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to version 8.1.0 or higher across all affected applications and environments."
+  },
+  "CVE-2020-10379|pillow|6.2.0": {
+    "cve_id": "CVE-2020-10379",
+    "explanation": "A critical software flaw exists in an image-processing library called Pillow, which our systems use to handle uploaded files. This flaw allows malicious actors to craft specific image files that, when processed, can crash our applications or potentially allow unauthorized code execution on our servers.",
+    "banking_context_risk": "If exploited in our customer-facing or internal applications\u2014such as mobile check deposit, customer document uploads, or KYC (Know Your Customer) verification portals\u2014an attacker could cause system outages or compromise sensitive customer PII (Personally Identifiable Information) and financial records.",
+    "priority_tier": "High",
+    "remediation": "Immediately upgrade the Pillow library to version 7.1.0 or higher across all affected applications and environments. Implement strict input validation and file-type verification for all user-uploaded images."
+  },
+  "CVE-2023-44271|pillow|6.2.0": {
+    "cve_id": "CVE-2023-44271",
+    "explanation": "A vulnerability exists in the Pillow software library that can allow malicious actors to cause a Denial of Service, meaning applications using this library may crash or become unresponsive when processing specially crafted image files.",
+    "banking_context_risk": "If internal banking applications, customer-facing portals, or document processing systems use this vulnerable library to handle user-uploaded images or documents, an attacker could exploit this flaw to disrupt critical banking services, leading to operational downtime and degraded customer experience.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched, secure version (10.0.0 or later) where the denial of service vulnerability has been resolved."
+  },
+  "CVE-2020-10378|pillow|6.2.0": {
+    "cve_id": "CVE-2020-10378",
+    "explanation": "A software flaw in the image-processing library Pillow allows an attacker to trick the system into reading unauthorized memory areas by supplying a specially crafted image file.",
+    "banking_context_risk": "If our web portals or mobile applications process customer-uploaded images (such as check deposits, ID verification, or profile pictures) using this vulnerable software, an attacker could potentially crash our services, cause a denial of service, or read sensitive data residing in memory.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to version 7.1.0 or higher across all affected applications and internal services."
+  },
+  "CVE-2021-28675|pillow|6.2.0": {
+    "cve_id": "CVE-2021-28675",
+    "explanation": "A vulnerability in the Pillow image processing software allows attackers to cause a denial of service, making applications that use it temporarily unavailable.",
+    "banking_context_risk": "If our customer-facing or internal applications use this software to process uploaded documents or profile pictures, an attacker could crash the service, disrupting banking operations and preventing customer access.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow library to version 8.1.1 or higher where the vulnerability is patched."
+  },
+  "CVE-2024-28219|pillow|6.2.0": {
+    "cve_id": "CVE-2024-28219",
+    "explanation": "A security flaw exists in the Pillow software library that handles image processing. If our systems process a maliciously crafted image file, it could cause the application to crash or potentially allow attackers to execute unauthorized code.",
+    "banking_context_risk": "If our customer-facing or internal applications use this vulnerable library to process uploaded documents\u2014such as checks, identity documents, or user avatars\u2014an attacker could exploit this to compromise server integrity, potentially exposing sensitive customer data or disrupting banking operations.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to the latest patched version where the buffer overflow vulnerability has been resolved, and audit applications to ensure no unvalidated image processing occurs."
+  },
+  "CVE-2024-34064|jinja2|2.10": {
+    "cve_id": "CVE-2024-34064",
+    "explanation": "A vulnerability exists in the Jinja2 template engine where user-supplied input used as keys in the 'xmlattr' filter can lead to HTML attribute injection, potentially allowing unintended HTML or script context manipulation.",
+    "banking_context_risk": "If our customer-facing web applications or internal portals use this vulnerable version of Jinja2 to render dynamic content or statements, an attacker could manipulate webpage structures, potentially facilitating phishing attacks against banking customers or defacing internal banking tools.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the jinja2 package to a patched version (such as 3.1.4 or higher) where the xmlattr filter securely handles untrusted keys, and review all templates utilizing the xmlattr filter to ensure user input is strictly sanitized."
+  },
+  "CVE-2024-47081|requests|2.19.1": {
+    "cve_id": "CVE-2024-47081",
+    "explanation": "A security flaw in an older version of a software library (requests) could allow sensitive login credentials stored in configuration files (.netrc) to be accidentally leaked to unauthorized external servers if an application is tricked into accessing a malicious URL.",
+    "banking_context_risk": "If internal bank applications or automation scripts use this vulnerable library to connect to external APIs, attackers could potentially intercept stored credentials, leading to unauthorized access to bank systems or data.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'requests' Python package to a patched, non-vulnerable version (typically version 2.32.2 or higher)."
+  },
+  "CVE-2024-49766|werkzeug|0.14.1": {
+    "cve_id": "CVE-2024-49766",
+    "explanation": "A security flaw exists in the Werkzeug software library's path-joining function when running on Windows operating systems. This flaw could allow an attacker to bypass security restrictions and access files outside of the intended directory.",
+    "banking_context_risk": "If our internal applications or customer-facing portals run on Windows servers utilizing this vulnerable library, an unauthorized user could potentially read sensitive files, such as configuration data, internal documents, or customer records, leading to a data breach.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the werkzeug package to the latest patched version where the safe_join function is properly secured for Windows environments."
+  },
+  "CVE-2024-22195|jinja2|2.10": {
+    "cve_id": "CVE-2024-22195",
+    "explanation": "A security flaw in the Jinja2 template engine allows attackers to inject malicious HTML attributes if they control the keys passed to the 'xmlattr' filter, which could lead to unauthorized script execution in a user's browser.",
+    "banking_context_risk": "If our web applications use this vulnerable library to render customer-facing pages (like online banking portals or customer service dashboards), an attacker could exploit it to perform Cross-Site Scripting (XSS) attacks, potentially stealing session tokens or sensitive customer financial data.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the jinja2 package to the latest patched version where the xmlattr filter properly sanitizes input keys."
+  },
+  "CVE-2026-27199|werkzeug|0.14.1": {
+    "cve_id": "CVE-2026-27199",
+    "explanation": "A utility function in our web application framework fails to properly sanitize file paths on Windows systems, allowing malicious users to access special system device names.",
+    "banking_context_risk": "If our internal applications run on Windows servers and process user-supplied file paths, an attacker could potentially manipulate file requests to access system devices, leading to denial of service or unauthorized data access.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the werkzeug package to the latest patched version where safe_join() correctly restricts Windows special device names."
+  },
+  "CVE-2026-59197|pillow|6.2.0": {
+    "cve_id": "CVE-2026-59197",
+    "explanation": "A critical software flaw exists in an image processing library used by our applications, allowing malicious actors to corrupt system memory by sending specially crafted image files.",
+    "banking_context_risk": "If exploited in our customer-facing or internal document processing portals, attackers could execute arbitrary code, potentially leading to unauthorized access to sensitive banking systems, customer records, or financial transaction data.",
+    "priority_tier": "High",
+    "remediation": "Immediately upgrade the Pillow library to a patched version where the integer overflow in ImagingExpand is resolved."
+  },
+  "CVE-2021-28678|pillow|6.2.0": {
+    "cve_id": "CVE-2021-28678",
+    "explanation": "A vulnerability exists in the Pillow software library due to insufficient verification of data authenticity when processing certain image files, which could potentially allow attackers to bypass security checks.",
+    "banking_context_risk": "If our banking applications process customer-uploaded images\u2014such as check deposits, ID verification for account opening, or profile pictures\u2014using this vulnerable library, an attacker could exploit it to cause application crashes, denial of service, or potentially execute malicious code within our document processing pipelines.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to version 8.1.1 or higher across all affected internal applications, customer-facing portals, and containerized services that handle image processing."
+  },
+  "CVE-2024-56326|jinja2|2.10": {
+    "cve_id": "CVE-2024-56326",
+    "explanation": "A vulnerability exists in the Jinja2 templating engine where a crafty user could bypass security restrictions (a sandbox breakout) by indirectly calling the format method, potentially executing unauthorized code on the server.",
+    "banking_context_risk": "If our banking applications use this vulnerable software to render dynamic content or customer communications, an attacker could exploit it to gain unauthorized access to internal server resources, potentially exposing sensitive customer financial data or disrupting core banking services.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the jinja2 package to a patched version (such as 2.11.3 or later, or the latest stable release) where the sandbox bypass is resolved."
+  },
+  "CVE-2026-54058|pillow|6.2.0": {
+    "cve_id": "CVE-2026-54058",
+    "explanation": "A security flaw exists in an image processing software library called Pillow, specifically when handling a niche file format called McIdas AREA. If a malicious actor provides a specially crafted image file, it can trick the system into reading memory it shouldn't, potentially leading to system crashes or information disclosure.",
+    "banking_context_risk": "If the bank uses applications that process unverified customer-uploaded images or documents using this vulnerable version of Pillow, attackers could potentially exploit this to crash internal servers or read sensitive memory contents, risking system availability and data confidentiality.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version (version 8.2.0 or later where this vulnerability is resolved) across all affected internal applications and container images."
+  },
+  "CVE-2026-59199|pillow|6.2.0": {
+    "cve_id": "CVE-2026-59199",
+    "explanation": "A critical software flaw exists in the image processing library Pillow version 6.2.0, allowing attackers to corrupt computer memory and potentially execute malicious code by manipulating image dimensions during cropping or pasting operations.",
+    "banking_context_risk": "If our banking applications process customer-uploaded documents, profile pictures, or scanned checks using this vulnerable library, an attacker could exploit this flaw to crash our systems, cause denial of service, or potentially gain unauthorized access to internal banking networks and sensitive customer data.",
+    "priority_tier": "High",
+    "remediation": "Immediately upgrade the Pillow library to a patched version (latest stable release) across all applications and services that handle image processing."
+  },
+  "CVE-2026-59205|pillow|6.2.0": {
+    "cve_id": "CVE-2026-59205",
+    "explanation": "A security flaw exists in the Pillow library version 6.2.0 that allows an attacker to corrupt memory through specially crafted image processing operations.",
+    "banking_context_risk": "If our banking applications process malicious images uploaded by customers (such as scanned documents, profile pictures, or check images), this vulnerability could potentially allow attackers to execute arbitrary code or crash our systems, leading to service disruption or unauthorized data access.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version where this vulnerability is resolved."
+  },
+  "CVE-2026-59200|pillow|6.2.0": {
+    "cve_id": "CVE-2026-59200",
+    "explanation": "A vulnerability exists in the Pillow software library that allows malicious actors to crash applications by supplying a specially crafted PDF file that consumes excessive system memory.",
+    "banking_context_risk": "If an attacker uploads this malicious PDF file to customer-facing or internal banking applications (such as loan processing or document upload portals), it could cause the server to run out of memory and crash, leading to a Denial of Service (DoS) for critical banking services.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the pillow package from version 6.2.0 to the latest patched version where the decompression bomb protection is properly enforced."
+  },
+  "CVE-2025-66221|werkzeug|0.14.1": {
+    "cve_id": "CVE-2025-66221",
+    "explanation": "An older utility component used in our web applications incorrectly handles certain file paths on Windows operating systems, potentially allowing unauthorized access to system files.",
+    "banking_context_risk": "If our internal applications run on Windows servers using this component, an attacker could exploit this vulnerability to read sensitive configuration or data files, increasing the risk of data exposure.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the werkzeug package to the latest patched version across all affected environments."
+  },
+  "CVE-2026-55379|pillow|6.2.0": {
+    "cve_id": "CVE-2026-55379",
+    "explanation": "A vulnerability in the image processing library Pillow allows an attacker to bypass built-in security protections against maliciously crafted files designed to consume excessive system resources.",
+    "banking_context_risk": "If our systems process user-uploaded documents, profile pictures, or scanned forms using this vulnerable library, an attacker could upload a specially crafted font file that crashes the server or causes a denial of service, potentially disrupting critical online banking services and customer operations.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version (version 8.0.0 or later, where this decompression check was properly implemented) and audit all internal applications utilizing Pillow for image and font processing."
+  },
+  "CVE-2026-54060|pillow|6.2.0": {
+    "cve_id": "CVE-2026-54060",
+    "explanation": "A vulnerability exists in the image processing library Pillow, where handling certain font files triggers the creation of excessively large images without adequate safety checks against decompression bombs.",
+    "banking_context_risk": "If an attacker uploads a specially crafted font or image file to our customer-facing or internal portals, it could consume all server memory, leading to a denial of service (DoS) and disrupting critical banking operations.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version where the decompression bomb check is properly enforced in FontFile.compile()."
+  },
+  "CVE-2026-55380|pillow|6.2.0": {
+    "cve_id": "CVE-2026-55380",
+    "explanation": "A flaw in the image processing library allows attackers to trick the system into accepting massive image files without proper size limits.",
+    "banking_context_risk": "If a customer or malicious user uploads a specially crafted image (such as for KYC identity verification, check deposits, or document uploads), the banking application could crash due to memory exhaustion, leading to denial of service for critical customer-facing portals.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the pillow package to a patched version where the decompression bomb check is enforced in GdImageFile._open(), or implement strict file size and dimension validation before passing images to Pillow."
+  },
+  "CVE-2026-54059|pillow|6.2.0": {
+    "cve_id": "CVE-2026-54059",
+    "explanation": "A flaw in the Pillow library allows specially crafted font files to bypass built-in safety limits designed to prevent memory exhaustion, potentially causing applications to crash when processing these files.",
+    "banking_context_risk": "If our customer-facing web portals or internal document processing systems handle malicious font files, attackers could trigger Denial of Service (DoS) attacks, rendering critical banking applications temporarily unavailable to customers and staff.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched version where the decompression bomb check is properly enforced in `PcfFontFile._load_bitmaps()`."
+  },
+  "CVE-2026-21860|werkzeug|0.14.1": {
+    "cve_id": "CVE-2026-21860",
+    "explanation": "A vulnerability exists in the Werkzeug library's file path handling function (safe_join). On systems running Windows, it fails to properly block special device names combined with compound file extensions, which could allow unauthorized access to files.",
+    "banking_context_risk": "If our internal banking applications run on Windows servers and process user-supplied file paths using this vulnerable function, attackers could potentially bypass security controls to read sensitive configuration files, logs, or customer data stored on the server.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the werkzeug package to the latest patched version provided by the vendor where the safe_join function correctly sanitizes Windows special device names and compound extensions."
+  },
+  "CVE-2025-27516|jinja2|2.10": {
+    "cve_id": "CVE-2025-27516",
+    "explanation": "A security flaw in the Jinja2 template rendering software allows attackers to bypass security restrictions (a sandbox breakout) by tricking the system into using unauthorized formatting methods.",
+    "banking_context_risk": "If exploited in our customer-facing or internal web applications, an attacker could potentially execute arbitrary code or access sensitive data that the template engine processes, compromising system integrity and customer privacy.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the jinja2 package to a patched version where this sandbox breakout vulnerability is resolved, and review all user-supplied template inputs for potential abuse."
+  },
+  "CVE-2024-35195|requests|2.19.1": {
+    "cve_id": "CVE-2024-35195",
+    "explanation": "A software flaw in the Python requests library causes a bank's automated systems to stop checking the security certificates of external websites after encountering a single unverified connection. This leaves subsequent connections vulnerable to interception.",
+    "banking_context_risk": "If internal bank applications use this library to connect to external APIs or partner services, attackers could potentially intercept, view, or tamper with sensitive financial data and API communications through man-in-the-middle attacks.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'requests' package to a patched version (version 2.32.0 or higher) where this session persistence flaw is resolved, and review code to ensure 'verify=False' is not being used in production environments."
+  },
+  "CVE-2026-59198|pillow|6.2.0": {
+    "cve_id": "CVE-2026-59198",
+    "explanation": "A flaw in the Pillow image processing library allows the TGA encoder to accidentally read and include up to 57 kilobytes of internal memory from the server into newly generated images.",
+    "banking_context_risk": "If our systems process and generate images using this vulnerable library, sensitive information currently residing in server memory\u2014such as internal configurations, session tokens, or customer data\u2014could be inadvertently leaked into output image files, creating compliance and privacy risks.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to the latest patched version where the TGA RLE encoder memory leak is resolved."
+  },
+  "CVE-2023-23934|werkzeug|0.14.1": {
+    "cve_id": "CVE-2023-23934",
+    "explanation": "A flaw exists in how the web utility library handles unnamed browser cookies, which can allow an attacker to bypass security restrictions designed to protect sensitive cookies prefixed with '__Host-'.",
+    "banking_context_risk": "If exploited, this could potentially allow attackers to manipulate or spoof high-security session and authentication cookies used in our banking applications, increasing the risk of session hijacking or unauthorized access.",
+    "priority_tier": "Low",
+    "remediation": "Upgrade the werkzeug package to version 2.2.3 or later where the cookie parsing vulnerability has been patched."
+  },
+  "CVE-2026-27205|flask|0.12.2": {
+    "cve_id": "CVE-2026-27205",
+    "explanation": "An older web application framework component we use fails to include a specific internet header called 'Vary: Cookie' when handling certain user sessions. This can occasionally cause web caches to mistakenly save and display one customer's private page content to another user.",
+    "banking_context_risk": "In a banking environment, if a shared caching proxy or content delivery network improperly stores a page, a customer could potentially view cached account details or transaction screens intended for a different user. However, the risk is mitigated because it requires specific access patterns and has a low severity score.",
+    "priority_tier": "Low",
+    "remediation": "Upgrade the Flask package from version 0.12.2 to a patched, supported version, or manually ensure the 'Vary: Cookie' header is explicitly added to HTTP responses containing session data."
+  },
+  "CVE-2026-25645|requests|2.19.1": {
+    "cve_id": "CVE-2026-25645",
+    "explanation": "A utility function used to process compressed files can unsafely reuse temporary file names, potentially allowing unauthorized access to temporary data.",
+    "banking_context_risk": "If our internal applications use this specific utility to process documents uploaded by customers or third parties, an attacker could potentially access or manipulate sensitive temporary data processed by the bank.",
+    "priority_tier": "Medium",
+    "remediation": "Update the 'requests' package to the latest patched version where the insecure temp file reuse in extract_zipped_paths() is resolved."
+  },
+  "CVE-2026-42310|pillow|6.2.0": {
+    "cve_id": "CVE-2026-42310",
+    "explanation": "An issue in the Pillow software library allows an attacker to cause an infinite loop by supplying a maliciously crafted PDF file, freezing the application.",
+    "banking_context_risk": "If our document processing systems use this vulnerable library to handle customer-submitted PDFs, an attacker could trigger a denial-of-service attack, crashing the service and halting loan processing, account opening, or document verification workflows.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the pillow package to a patched version beyond 6.2.0 where the PDF parsing infinite loop is resolved."
+  },
+  "CVE-2026-55798|pillow|6.2.0": {
+    "cve_id": "CVE-2026-55798",
+    "explanation": "A vulnerability exists in an older image processing library (Pillow) used by our applications. If an attacker can manipulate file paths passed to the Windows image viewer function, they could execute unauthorized operating system commands on the host server.",
+    "banking_context_risk": "If an internal application or customer-facing portal processing document uploads uses this vulnerable library on a Windows server, a compromised system could lead to unauthorized access to sensitive financial records, customer personally identifiable information (PII), or disruption of critical banking services.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to the latest patched version where the command injection flaw in WindowsViewer.get_command() is resolved. If an upgrade is not immediately possible, restrict the use of the Windows viewer module or implement strict input validation on all file paths."
+  },
+  "CVE-2026-42308|pillow|6.2.0": {
+    "cve_id": "CVE-2026-42308",
+    "explanation": "A software flaw in the image-processing library Pillow could allow an attacker to crash systems or potentially execute unauthorized code by tricking the application into processing a specially crafted font file.",
+    "banking_context_risk": "If our customer-facing or internal applications use this library to process documents or images containing fonts (such as PDF generation, loan document processing, or ID verification), an attacker could cause denial-of-service outages or potentially compromise server integrity.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the Pillow package to the latest patched version where the integer overflow vulnerability is resolved."
+  },
+  "GHSA-jgpv-4h4c-xhw3|pillow|6.2.0": {
+    "cve_id": "GHSA-jgpv-4h4c-xhw3",
+    "explanation": "A vulnerability exists in the Pillow software library that allows attackers to consume excessive system resources, potentially causing applications that process images to freeze or crash.",
+    "banking_context_risk": "If our customer-facing or internal banking applications use this library to process uploaded documents, receipts, or profile pictures, an attacker could exploit this to launch a denial-of-service attack, making critical banking services temporarily unavailable to customers and staff.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the Pillow package to a patched, non-vulnerable version (version 8.2.0 or higher is recommended) across all applications and dependencies."
+  },
+  "GHSA-4fx9-vc88-q2xc|pillow|6.2.0": {
+    "cve_id": "GHSA-4fx9-vc88-q2xc",
+    "explanation": "A software flaw exists in the Pillow image processing library that can cause the application to get stuck in an endless loop when processing a specially crafted image file.",
+    "banking_context_risk": "If an attacker uploads a malicious image to a bank portal (such as a customer document upload or profile picture), the system could hang or crash, leading to a denial of service for that application and potentially impacting customer onboarding or document verification workflows.",
+    "priority_tier": "Low",
+    "remediation": "Upgrade the Pillow library to a patched version (version 7.0.0 or later) where the infinite loop vulnerability has been resolved."
+  },
+  "CVE-2026-44494|axios|0.18.0": {
+    "cve_id": "CVE-2026-44494",
+    "explanation": "A security flaw in the software library allows attackers to manipulate the core structure of the application, potentially altering how data is processed and handled.",
+    "banking_context_risk": "If exploited in our online banking or internal platforms, this could lead to unauthorized data access, application instability, or manipulation of financial transaction logic.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the axios package to a patched, secure version immediately and audit dependent services for anomalous behavior."
+  },
+  "CVE-2025-58754|axios|0.18.0": {
+    "cve_id": "CVE-2025-58754",
+    "explanation": "A vulnerability exists in the software library handling web requests, allowing attackers to consume excessive system resources without restriction.",
+    "banking_context_risk": "If exploited in our banking applications, this could lead to denial of service, potentially disrupting online banking portals, transaction processing, and internal employee systems.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to a patched version where resource throttling and limits are properly implemented."
+  },
+  "SNYK-JS-AXIOS-18060730|axios|0.18.0": {
+    "cve_id": "SNYK-JS-AXIOS-18060730",
+    "explanation": "A widely used software component for making web requests has a defect where processing deeply nested or circular data structures causes the application to consume excessive system memory and crash.",
+    "banking_context_risk": "If exploited in our customer-facing or internal banking applications, this vulnerability could cause sudden service outages, preventing customers from accessing online banking and disrupting internal financial processing.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'axios' package to a secure patched version (>=0.18.1 or the latest stable release) in all affected banking applications."
+  },
+  "SNYK-JS-AXIOS-18065355|axios|0.18.0": {
+    "cve_id": "SNYK-JS-AXIOS-18065355",
+    "explanation": "A security flaw in a commonly used software library (axios) allows attackers to tamper with the internal structure of JavaScript objects, potentially leading to unauthorized behavior or application instability.",
+    "banking_context_risk": "If exploited in our customer-facing portals or internal banking applications, this could lead to logic bypasses, data manipulation, or denial of service, risking operational integrity and customer data confidentiality.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package from version 0.18.0 to the latest patched version (0.21.1 or higher) across all affected repositories and rebuild the applications."
+  },
+  "SNYK-JS-AXIOS-18065349|axios|0.18.0": {
+    "cve_id": "SNYK-JS-AXIOS-18065349",
+    "explanation": "A vulnerability in a widely used software library that helps different banking systems communicate. Attackers can potentially manipulate the internal structure of the application to alter how data is processed.",
+    "banking_context_risk": "If exploited in our online banking or internal APIs, attackers could manipulate data flows, potentially causing application crashes, unexpected behavior, or unauthorized access to sensitive financial transactions and customer records.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'axios' package to version 0.18.1 or higher, where the prototype pollution vulnerability has been patched."
+  },
+  "SNYK-JS-AXIOS-6124857|axios|0.18.0": {
+    "cve_id": "SNYK-JS-AXIOS-6124857",
+    "explanation": "A vulnerability in the Axios software library allows attackers to cause a Denial of Service by sending specially crafted inputs that overwhelm server processing, making banking applications temporarily unavailable to customers.",
+    "banking_context_risk": "If exploited, critical customer-facing digital banking channels, mobile app backends, or internal APIs could crash and become unresponsive, halting transactions, account access, and payment processing.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to version 0.18.1 or higher, or the latest patched version, where the regular expression flaw has been resolved."
+  },
+  "SNYK-JS-LODASH-6139239|lodash|4.17.11": {
+    "cve_id": "SNYK-JS-LODASH-6139239",
+    "explanation": "A security flaw exists in a widely used software library called Lodash, which helps process data in applications. This flaw allows an attacker to manipulate the core structure of the application's programming environment, potentially leading to unauthorized system behavior or crashes.",
+    "banking_context_risk": "If exploited in our banking applications, this vulnerability could allow attackers to manipulate sensitive transaction data, bypass business logic controls, or cause denial-of-service disruptions that impact customer-facing digital banking services.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the lodash package to version 4.17.21 or later across all affected applications, and run dependency scans to ensure no secondary packages are pulling in the vulnerable version."
+  },
+  "SNYK-JS-AXIOS-9403194|axios|0.18.0": {
+    "cve_id": "SNYK-JS-AXIOS-9403194",
+    "explanation": "A vulnerability in the software library used by our applications to make web requests allows malicious actors to trick our servers into communicating with internal or unauthorized external systems.",
+    "banking_context_risk": "An attacker could exploit this to bypass our network firewalls, access internal banking services, retrieve sensitive customer data, or interact with restricted payment processing APIs.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'axios' package to the latest patched version (1.7.4 or higher) or the highest secure version available, and review application logic to restrict outgoing URL destinations."
+  },
+  "SNYK-JS-LODASH-608086|lodash|4.17.11": {
+    "cve_id": "SNYK-JS-LODASH-608086",
+    "explanation": "A widely used utility library in our software, Lodash, contains a flaw that allows malicious actors to inject properties into the base JavaScript object. This can lead to unpredictable application behavior or unauthorized data manipulation.",
+    "banking_context_risk": "If exploited in our customer-facing or internal banking portals, an attacker could manipulate session data, bypass security controls, or cause denial of service, potentially exposing sensitive financial records and transaction details.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the lodash package to version 4.17.12 or higher across all affected applications and run dependency checks to ensure no vulnerable transitive dependencies remain."
+  },
+  "CVE-2026-33916|handlebars|4.0.11": {
+    "cve_id": "CVE-2026-33916",
+    "explanation": "A minor flaw in a software library used for building web pages allows an attacker to manipulate the foundational structure of JavaScript objects, potentially altering how applications behave.",
+    "banking_context_risk": "While technically a security flaw, the low severity rating indicates it is difficult to exploit in a real-world scenario and is unlikely to result in direct unauthorized access to customer financial records or funds.",
+    "priority_tier": "Low",
+    "remediation": "Upgrade the handlebars package to a patched, secure version as part of the standard software update cycle."
+  },
+  "CVE-2021-23369|handlebars|4.0.11": {
+    "cve_id": "CVE-2021-23369",
+    "explanation": "A security flaw in a software component used to build web pages allows an attacker to execute malicious commands on our servers remotely.",
+    "banking_context_risk": "If exploited, an attacker could compromise internal banking applications, potentially leading to unauthorized access to sensitive customer financial data, account tampering, or severe system downtime.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the handlebars package from version 4.0.11 to version 4.7.7 or later where the remote code execution vulnerability is patched."
+  },
+  "CVE-2021-23383|handlebars|4.0.11": {
+    "cve_id": "CVE-2021-23383",
+    "explanation": "A security flaw in a software library used for building web pages allows malicious actors to inject arbitrary code into the global application environment, potentially altering how the software behaves.",
+    "banking_context_risk": "If exploited in our customer-facing portals or internal banking applications, an attacker could manipulate session data, cause application crashes, or potentially bypass certain security controls.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the handlebars package to version 4.7.7 or higher where the prototype pollution vulnerability has been patched."
+  },
+  "CVE-2026-33938|handlebars|4.0.11": {
+    "cve_id": "CVE-2026-33938",
+    "explanation": "A critical software flaw in the Handlebars template engine allows attackers to trick the system into mishandling data types, potentially leading to unauthorized system access or remote code execution.",
+    "banking_context_risk": "If exploited in our customer-facing web applications or internal portals, attackers could execute malicious code, compromise sensitive financial transactions, or exfiltrate customer Personally Identifiable Information (PII).",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the handlebars package from version 4.0.11 to the latest patched version and audit dependent applications for potential compromise."
+  },
+  "CVE-2026-33941|handlebars|4.0.11": {
+    "cve_id": "CVE-2026-33941",
+    "explanation": "A security flaw exists in the software component responsible for generating web pages, where user-supplied data is not properly cleaned. This could allow malicious actors to inject unauthorized scripts into web pages viewed by our customers or employees.",
+    "banking_context_risk": "If exploited in our online banking portals, attackers could execute cross-site scripting (XSS) attacks to hijack customer sessions, steal sensitive authentication tokens, or tamper with the user interface to trick clients into revealing credentials.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the handlebars package immediately to the latest patched version and review input sanitization controls across all web applications utilizing this template engine."
+  },
+  "CVE-2026-33937|handlebars|4.0.11": {
+    "cve_id": "CVE-2026-33937",
+    "explanation": "A critical software flaw allows attackers to manipulate data types processed by the Handlebars templating engine, potentially letting them crash applications or execute unauthorized code.",
+    "banking_context_risk": "If exploited in our customer-facing portals or internal banking applications, attackers could compromise sensitive financial data, execute arbitrary code, or cause major service outages for core banking operations.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the handlebars package to the latest patched version and audit dependent applications for unexpected input handling."
+  },
+  "CVE-2026-33940|handlebars|4.0.11": {
+    "cve_id": "CVE-2026-33940",
+    "explanation": "A critical security flaw exists in the software library used to generate dynamic web pages and documents, allowing attackers to trick the system into misinterpreting data types.",
+    "banking_context_risk": "If exploited in our customer-facing web applications or automated document generation systems, attackers could potentially bypass security controls, execute unauthorized code, or access sensitive customer financial data.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the handlebars package from version 4.0.11 to the latest patched version and audit dependent applications for potential exploitation."
+  },
+  "SNYK-JS-HANDLEBARS-15813000|handlebars|4.0.11": {
+    "cve_id": "SNYK-JS-HANDLEBARS-15813000",
+    "explanation": "A timing flaw in the handlebars software allows an attacker to potentially interfere with data processing by manipulating files or resources during the exact microsecond the system is checking them.",
+    "banking_context_risk": "If exploited in our web applications, this race condition could lead to unpredictable application behavior or data corruption when generating customer-facing documents, statements, or transactional emails.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the handlebars package to the latest patched version where the TOCTOU race condition has been resolved."
+  },
+  "CVE-2026-33939|handlebars|4.0.11": {
+    "cve_id": "CVE-2026-33939",
+    "explanation": "A third-party software component used for generating web pages fails to properly handle unexpected inputs or errors, which could allow an attacker to disrupt services or potentially execute unauthorized actions.",
+    "banking_context_risk": "If exploited in our customer-facing web portals or internal banking applications, this flaw could lead to application downtime, service disruption, or unauthorized access to sensitive financial workflows and user data.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'handlebars' package to the latest patched version where this exceptional condition handling flaw has been resolved."
+  },
+  "SNYK-JS-HANDLEBARS-173692|handlebars|4.0.11": {
+    "cve_id": "SNYK-JS-HANDLEBARS-173692",
+    "explanation": "A vulnerability exists in the Handlebars library used by our applications to generate web pages and documents. It allows an attacker to manipulate the core structure of JavaScript objects, which can lead to unexpected behavior, application crashes, or potentially unauthorized access to system functions.",
+    "banking_context_risk": "If exploited in our customer-facing web portals or internal reporting systems, an attacker could tamper with session data, bypass security controls, or cause denial of service, potentially exposing sensitive customer financial data and damaging institutional trust.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the handlebars package to a patched secure version (4.7.7 or higher) across all affected Node.js applications and rebuild the dependencies."
+  },
+  "SNYK-JS-HANDLEBARS-174183|handlebars|4.0.11": {
+    "cve_id": "SNYK-JS-HANDLEBARS-174183",
+    "explanation": "A security flaw in the Handlebars library allows malicious actors to inject properties into the base JavaScript object prototype. This can lead to unexpected behavior, data tampering, or application crashes across our digital platforms.",
+    "banking_context_risk": "If exploited in our customer-facing web applications or internal portals, attackers could manipulate data structures, potentially bypassing security controls or corrupting session data, exposing sensitive banking operations and customer information.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the handlebars package to version 4.1.2 or higher, where the prototype pollution vulnerability has been patched."
+  },
+  "CVE-2019-19919|handlebars|4.0.11": {
+    "cve_id": "CVE-2019-19919",
+    "explanation": "A vulnerability exists in the Handlebars template library that allows attackers to manipulate the underlying JavaScript prototype. This means an external input could potentially overwrite or modify default properties and functions shared across the bank's applications, leading to unexpected behavior or security controls being bypassed.",
+    "banking_context_risk": "If exploited in our customer-facing web portals or internal banking applications, attackers could manipulate data structures used in financial transactions, potentially leading to unauthorized access, data corruption, or denial of service that disrupts critical banking operations.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the handlebars package from version 4.0.11 to version 4.5.3 or later, where this prototype pollution vulnerability has been resolved."
+  },
+  "CVE-2019-20922|handlebars|4.0.11": {
+    "cve_id": "CVE-2019-20922",
+    "explanation": "A vulnerability exists in the Handlebars templating library used by our applications that can allow an attacker to crash our software remotely, causing service outages.",
+    "banking_context_risk": "If exploited against customer-facing web portals or mobile banking backends, this could result in unexpected downtime, preventing customers from accessing their accounts, making payments, or viewing statements, leading to reputational damage and potential regulatory scrutiny.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the handlebars package to version 4.1.2 or higher where the denial of service vulnerability is resolved."
+  },
+  "CVE-2019-20920|handlebars|4.0.11": {
+    "cve_id": "CVE-2019-20920",
+    "explanation": "A security flaw in a software library used to build web pages allows an attacker to trick the system into running malicious code, potentially taking control of the application.",
+    "banking_context_risk": "If exploited in our customer-facing portals or internal banking applications, attackers could compromise sensitive financial data, execute unauthorized transactions, or disrupt critical banking services.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the handlebars package to a patched version (4.3.0 or later) where the arbitrary code execution vulnerability has been resolved."
+  },
+  "SNYK-JS-HANDLEBARS-534988|handlebars|4.0.11": {
+    "cve_id": "SNYK-JS-HANDLEBARS-534988",
+    "explanation": "A critical vulnerability exists in the Handlebars template library that allows malicious actors to manipulate the underlying JavaScript object structure. This means an attacker could potentially inject unauthorized properties or override system behaviors.",
+    "banking_context_risk": "If exploited in our banking portals or customer-facing web applications, an attacker could manipulate application logic, potentially leading to unauthorized access to sensitive financial data, account tampering, or system-wide denial of service.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the Handlebars package to version 4.1.2 or higher, where the prototype pollution vulnerability has been resolved, and run a dependency audit across all banking applications."
+  },
+  "SNYK-JS-HANDLEBARS-567742|handlebars|4.0.11": {
+    "cve_id": "SNYK-JS-HANDLEBARS-567742",
+    "explanation": "A vulnerability exists in the Handlebars templating library that allows attackers to manipulate the underlying structure of JavaScript objects, a flaw known as prototype pollution. This can happen when processing untrusted template inputs, potentially leading to unauthorized behavior or data exposure.",
+    "banking_context_risk": "If exploited in our customer-facing web applications or internal dashboards, attackers could potentially tamper with application logic, bypass security controls, or manipulate rendered financial data and statements.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the handlebars package to version 4.1.2 or higher, where the prototype pollution vulnerability has been resolved, and run a dependency audit across the application codebase."
+  },
+  "CVE-2022-23540|jsonwebtoken|8.3.0": {
+    "cve_id": "CVE-2022-23540",
+    "explanation": "A security flaw exists in the component responsible for handling digital security tokens, allowing a malicious actor to potentially bypass authentication checks.",
+    "banking_context_risk": "If exploited in our online banking or API gateways, attackers could impersonate valid users or administrative accounts, potentially leading to unauthorized access to customer financial data and fraudulent transaction execution.",
+    "priority_tier": "Medium",
+    "remediation": "Update the jsonwebtoken package to the latest patched version where this authentication bypass flaw is resolved."
+  },
+  "CVE-2022-23539|jsonwebtoken|8.3.0": {
+    "cve_id": "CVE-2022-23539",
+    "explanation": "The software library used to generate and verify security tokens (JSON Web Tokens) relies on a weak or flawed cryptographic method, which could potentially allow unauthorized parties to bypass authentication checks.",
+    "banking_context_risk": "If exploited in our customer portals or mobile banking APIs, attackers could forge valid login sessions, potentially gaining unauthorized access to sensitive customer financial data and account functions.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the jsonwebtoken package to the latest patched version immediately and review authentication mechanisms for any anomalous token usage."
+  },
+  "CVE-2020-28500|lodash|4.17.4": {
+    "cve_id": "CVE-2020-28500",
+    "explanation": "A widely used software library called Lodash contains a flaw in how it processes certain text patterns. If an attacker submits specifically crafted input, it can cause our applications to freeze or crash, making our digital services temporarily unavailable to customers.",
+    "banking_context_risk": "If an internal application or customer-facing portal uses this vulnerable version of Lodash, an attacker could trigger a Denial of Service (DoS). This could disrupt online banking operations, customer support portals, or internal transaction processing systems, leading to operational downtime and reputational damage.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the lodash package to version 4.17.21 or higher across all affected applications and run dependency scans to ensure no vulnerable transitive dependencies remain."
+  },
+  "CVE-2022-23541|jsonwebtoken|8.3.0": {
+    "cve_id": "CVE-2022-23541",
+    "explanation": "A vulnerability exists in the library used to handle JSON Web Tokens, which are digital keys used to keep user sessions secure. An attacker could potentially bypass security restrictions by improperly manipulating how security tokens are assigned and validated.",
+    "banking_context_risk": "If exploited in our online banking or mobile applications, malicious actors could potentially forge or manipulate authentication tokens, leading to unauthorized access to customer accounts, sensitive financial data, or internal banking APIs.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'jsonwebtoken' package to version 8.5.1 or higher across all affected applications and services immediately."
+  },
+  "CVE-2021-23337|lodash|4.17.4": {
+    "cve_id": "CVE-2021-23337",
+    "explanation": "A widely used software utility library contains a flaw that allows malicious actors to inject and execute arbitrary code, potentially taking control of the application using the vulnerable component.",
+    "banking_context_risk": "If exploited in our customer-facing portals or internal banking applications, attackers could compromise sensitive financial data, execute unauthorized transactions, or disrupt critical banking services.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the lodash package to version 4.17.21 or higher across all affected applications and verify dependency trees to ensure no secondary packages are pulling in the vulnerable version."
+  },
+  "CVE-2026-2950|lodash|4.17.4": {
+    "cve_id": "CVE-2026-2950",
+    "explanation": "A vulnerability in a widely used software library allows attackers to manipulate the foundational structure of objects within the application, potentially leading to unauthorized data modification or unexpected application behavior.",
+    "banking_context_risk": "If exploited in our banking applications, attackers could alter internal data structures to bypass validation logic, potentially leading to unauthorized access to account details, manipulation of transaction parameters, or service disruptions for customers.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the lodash package from version 4.17.4 to the latest patched version (4.17.21 or higher) where this prototype pollution vulnerability has been resolved."
+  },
+  "CVE-2025-13465|lodash|4.17.4": {
+    "cve_id": "CVE-2025-13465",
+    "explanation": "A vulnerability exists in the widely used software library 'lodash' that allows an attacker to manipulate the foundational structure of JavaScript objects, potentially altering how applications behave globally.",
+    "banking_context_risk": "If exploited in our customer-facing portals or internal banking applications, an attacker could bypass validation logic, manipulate transaction data objects, or cause application instability, leading to potential service disruption or unauthorized data access.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the lodash package to the latest patched version (4.17.21 or higher) across all affected codebases and verify dependency trees."
+  },
+  "CVE-2026-4800|lodash|4.17.4": {
+    "cve_id": "CVE-2026-4800",
+    "explanation": "A security flaw exists in a widely used software library (lodash) that allows attackers to inject and execute unauthorized malicious code remotely.",
+    "banking_context_risk": "If exploited in our banking applications, attackers could compromise customer financial data, manipulate transaction logic, or gain unauthorized access to internal banking systems.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the lodash package to the latest patched version immediately and scan dependent applications for vulnerable versions."
+  },
+  "CVE-2019-10744|lodash|4.17.4": {
+    "cve_id": "CVE-2019-10744",
+    "explanation": "A vulnerability exists in the Lodash utility library that allows malicious actors to manipulate the fundamental structure of JavaScript objects. This can lead to unexpected behavior, data tampering, or application crashes.",
+    "banking_context_risk": "If exploited in our customer-facing or internal banking applications, an attacker could potentially bypass security controls, alter transaction parameters, or corrupt financial data processing logic, leading to regulatory breaches and financial loss.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the lodash package to version 4.17.12 or higher across all affected repositories and rebuild dependent applications."
+  },
+  "CVE-2020-8203|lodash|4.17.4": {
+    "cve_id": "CVE-2020-8203",
+    "explanation": "A vulnerability in a widely used software library allows malicious actors to tamper with the foundational structure of the application's programming logic, potentially leading to unauthorized data manipulation or system instability.",
+    "banking_context_risk": "If exploited in our banking applications, attackers could manipulate account logic, alter transaction properties, or cause denial of service, exposing customer financial data and disrupting core banking operations.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the lodash package from version 4.17.4 to version 4.17.19 or higher across all affected repositories and dependent services."
+  },
+  "SNYK-JS-LODASH-608086|lodash|4.17.4": {
+    "cve_id": "SNYK-JS-LODASH-608086",
+    "explanation": "A vulnerability in a widely used utility library allows attackers to manipulate the foundational object structure of the application. This can lead to unauthorized modifications of application behavior, potentially bypassing security controls.",
+    "banking_context_risk": "If exploited in our online banking or customer-facing applications, attackers could manipulate data structures to access unauthorized accounts, cause service disruptions, or tamper with transaction processing workflows, leading to financial loss and reputational damage.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'lodash' package from version 4.17.4 to version 4.17.21 or later across all affected applications and dependencies."
+  },
+  "SNYK-JS-LODASH-6139239|lodash|4.17.4": {
+    "cve_id": "SNYK-JS-LODASH-6139239",
+    "explanation": "A flaw exists in a widely used software utility library called lodash, which allows malicious actors to inject properties into the base object prototype. This can alter the behavior of JavaScript applications running the vulnerable code.",
+    "banking_context_risk": "If exploited in our customer-facing or internal banking applications, this vulnerability could lead to application instability, bypass of security controls, or potential unauthorized access to sensitive financial data and transaction processing workflows.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the lodash package to version 4.17.21 or later across all affected repositories and dependency trees."
+  },
+  "CVE-2018-16487|lodash|4.17.4": {
+    "cve_id": "CVE-2018-16487",
+    "explanation": "A vulnerability exists in the widely used software library 'lodash' that allows attackers to manipulate the foundational structure of JavaScript objects, a flaw known as prototype pollution.",
+    "banking_context_risk": "If exploited in our banking applications, attackers could potentially bypass security controls, tamper with financial transaction logic, or cause application crashes leading to service disruption for customers.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the lodash package to version 4.17.11 or later across all affected applications and dependency trees."
+  },
+  "CVE-2019-1010266|lodash|4.17.4": {
+    "cve_id": "CVE-2019-1010266",
+    "explanation": "A widely used software utility library contains a flaw where processing maliciously crafted input can cause the system to consume excessive CPU resources, temporarily halting operations.",
+    "banking_context_risk": "If exploited in our customer-facing or internal web applications, this vulnerability could cause service degradation or outages, preventing customers from accessing their accounts and disrupting daily banking operations.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the lodash package from version 4.17.4 to version 4.17.11 or higher across all affected applications and services."
+  },
+  "CVE-2018-3721|lodash|4.17.4": {
+    "cve_id": "CVE-2018-3721",
+    "explanation": "A widely used software library called lodash contains a vulnerability that allows malicious actors to manipulate the underlying structure of JavaScript objects. By injecting unauthorized properties, an attacker can alter how the application behaves.",
+    "banking_context_risk": "If exploited in our customer-facing or internal banking applications, this vulnerability could lead to unauthorized access, data corruption, or denial of service by tampering with application logic, potentially exposing sensitive financial records or transaction data.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the lodash package from version 4.17.4 to version 4.17.5 or higher across all affected repositories and dependent applications."
+  },
+  "CVE-2021-44906|minimist|0.0.10": {
+    "cve_id": "CVE-2021-44906",
+    "explanation": "A minor flaw exists in a software utility library our developers use, which could theoretically allow unauthorized modification of internal data structures if an attacker manipulated input data.",
+    "banking_context_risk": "Because our bank uses layered security and this vulnerability requires specific conditions to exploit, the risk of direct financial loss or customer data exposure is minimal. It could potentially cause unexpected application behavior or minor service disruptions if triggered.",
+    "priority_tier": "Low",
+    "remediation": "Update the 'minimist' package to a patched version (v1.2.6 or later) in our application dependencies during the next routine maintenance cycle."
+  },
+  "CVE-2020-7598|minimist|0.0.10": {
+    "cve_id": "CVE-2020-7598",
+    "explanation": "A vulnerability in a third-party software library allows attackers to manipulate the underlying structure of JavaScript objects, potentially leading to unauthorized behavior or application instability.",
+    "banking_context_risk": "If exploited in our customer-facing or internal applications, this could lead to application crashes, denial of service, or unpredictable handling of transaction data, disrupting banking operations.",
+    "priority_tier": "Medium",
+    "remediation": "Update the 'minimist' package to a patched version (1.2.3 or higher) where the prototype pollution flaw is resolved."
+  },
+  "SNYK-JS-UGLIFYJS-1727251|uglify-js|2.8.29": {
+    "cve_id": "SNYK-JS-UGLIFYJS-1727251",
+    "explanation": "A flaw exists in a software component used to process and optimize JavaScript code, which can be exploited by attackers to cause sudden system crashes or extreme slowdowns when processing maliciously crafted input.",
+    "banking_context_risk": "If this tool is used in our customer-facing web applications or internal portals, an attacker could trigger a denial of service, making our digital banking services temporarily unavailable to customers and disrupting staff operations.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the uglify-js package to a patched, non-vulnerable version or replace it with a secure alternative used in the build pipeline."
+  },
+  "CVE-2026-67316|axios|0.18.0": {
+    "cve_id": "CVE-2026-67316",
+    "explanation": "A vulnerability exists in an older software library used by our applications to communicate over the network. This flaw could allow a malicious user to manipulate the internal structure of the application's data objects.",
+    "banking_context_risk": "If exploited in our online banking or internal portals, an attacker could potentially alter application behavior, bypass certain security controls, or cause application instability, risking service disruption for customers.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to a patched, non-vulnerable version (ideally 1.0.0 or higher) across all affected code repositories and rebuild the applications."
+  },
+  "CVE-2026-67319|axios|0.18.0": {
+    "cve_id": "CVE-2026-67319",
+    "explanation": "A security flaw in the software library used to communicate with web services allows attackers to inject malicious properties into the base JavaScript object, potentially altering the behavior of the application.",
+    "banking_context_risk": "If exploited in our customer-facing portals or internal banking applications, attackers could manipulate data processing logic, potentially leading to unauthorized data exposure, system instability, or bypass of validation checks.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to version 0.18.1 or higher, or apply the vendor-recommended patch to mitigate the prototype pollution vulnerability."
+  },
+  "CVE-2026-67321|axios|0.18.0": {
+    "cve_id": "CVE-2026-67321",
+    "explanation": "A vulnerability exists in the axios software library (version 0.18.0) that can cause the application to crash due to uncontrolled recursion when processing deeply nested data structures.",
+    "banking_context_risk": "If an attacker sends specially crafted input to our customer-facing or internal banking applications using this library, it could cause critical services to crash or become unresponsive, leading to service disruption for online banking and transaction processing.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the axios package to a patched, non-vulnerable version (version 0.21.1 or higher) across all affected applications and services."
+  },
+  "CVE-2026-111181|body-parser|1.18.2": {
+    "cve_id": "CVE-2026-111181",
+    "explanation": "A software flaw in a component that handles incoming web requests allows attackers to crash our applications by sending specially crafted data, causing unexpected application shutdowns.",
+    "banking_context_risk": "If an attacker exploits this vulnerability against our customer-facing web portals or mobile banking APIs, it could cause sudden service outages, preventing clients from accessing their accounts, making payments, or conducting financial transactions.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'body-parser' package to version 1.18.3 or later, or apply the latest vendor-supplied patch to ensure proper error handling for malformed requests."
+  },
+  "CVE-2026-111755|follow-redirects|1.16.0": {
+    "cve_id": "CVE-2026-111755",
+    "explanation": "A software library used for handling web requests contains a flawed pattern-matching rule. This flaw can be exploited by attackers to cause high resource consumption, potentially slowing down or crashing our applications.",
+    "banking_context_risk": "If exploited against our customer-facing web applications or internal banking services, this vulnerability could lead to denial of service, temporarily disrupting online banking operations and preventing customers from accessing their accounts.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'follow-redirects' package to the latest patched version where the regular expression issue is resolved."
+  },
+  "CVE-2026-116689|follow-redirects|1.16.0": {
+    "cve_id": "CVE-2026-116689",
+    "explanation": "A software library used to handle web traffic redirection accidentally leaks sensitive information, such as authentication credentials or personal data, when forwarding requests between servers.",
+    "banking_context_risk": "If exploited in our banking applications, this flaw could expose confidential customer data or internal API tokens during server communication, potentially leading to unauthorized account access or data breaches.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'follow-redirects' package to the latest patched version where the sensitive information leak is resolved."
+  },
+  "CVE-2026-17495|moment|2.19.3": {
+    "cve_id": "CVE-2026-17495",
+    "explanation": "A security flaw in the software allows unauthorized users to bypass normal folder boundaries and access sensitive files on the server hosting our applications.",
+    "banking_context_risk": "An attacker could potentially exploit this vulnerability to read confidential bank files, including source code, configuration data, or internal system details, potentially compromising customer data and regulatory compliance.",
+    "priority_tier": "High",
+    "remediation": "Immediately upgrade the 'moment' package to the latest patched version where the directory traversal vulnerability is resolved."
+  },
+  "CVE-2026-111756|follow-redirects|1.16.0": {
+    "cve_id": "CVE-2026-111756",
+    "explanation": "A security flaw in a software library used for handling web requests allows sensitive data to be improperly handled or left behind when information is stored or transferred.",
+    "banking_context_risk": "If exploited in our customer-facing or internal banking applications, this vulnerability could inadvertently expose sensitive customer data, authentication tokens, or financial transaction details during communication redirects.",
+    "priority_tier": "High",
+    "remediation": "Upgrade the 'follow-redirects' package to a patched version beyond 1.16.0 immediately and review application logs to ensure no sensitive parameters were exposed in transit."
+  },
+  "CVE-2026-90711|proxy-addr|2.0.7": {
+    "cve_id": "CVE-2026-90711",
+    "explanation": "A critical vulnerability exists in the proxy-addr package that allows malicious actors to impersonate legitimate users by spoofing network addresses.",
+    "banking_context_risk": "This flaw could allow attackers to bypass critical access controls and authentication mechanisms, potentially leading to unauthorized access to sensitive customer financial data and fraudulent transaction execution.",
+    "priority_tier": "Critical",
+    "remediation": "Immediately upgrade the proxy-addr package to the latest patched version and review API gateway and load balancer configurations to ensure proper IP header validation."
+  },
+  "CVE-2026-82417|qs|6.5.1": {
+    "cve_id": "CVE-2026-82417",
+    "explanation": "A data processing component used in our software can crash unexpectedly when it encounters specifically malformed input, leading to a disruption of service.",
+    "banking_context_risk": "If our customer-facing web applications or internal banking portals process malicious input that triggers this uncaught exception, the application service could crash and become temporarily unavailable to users and staff.",
+    "priority_tier": "Medium",
+    "remediation": "Upgrade the 'qs' package to the latest patched version where the exception is properly handled."
+  }
+}

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeGuard — AI-Assisted SBOM & Dependency Risk Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="{{ url_for('static', filename='chart.umd.min.js') }}"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e17; --surface:#10151f; --surface-2:#1a2233; --border:#242e42; --border-soft:#1b2334;
+    --text-primary:#e7ecf5; --text-secondary:#8d99b5; --text-muted:#5b6883;
+    --accent:#4c8dff; --accent-soft:rgba(76,141,255,0.12);
+    --critical:#f14e63; --critical-soft:rgba(241,78,99,0.13);
+    --high:#f2924a; --high-soft:rgba(242,146,74,0.13);
+    --medium:#e8c14a; --medium-soft:rgba(232,193,74,0.13);
+    --low:#43bd8c; --low-soft:rgba(67,189,140,0.13);
+  }
+  html,body{background:var(--bg); color:var(--text-primary); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased;}
+  .font-display{font-family:'Space Grotesk',sans-serif;}
+  .font-mono{font-family:'JetBrains Mono',monospace;}
+  ::-webkit-scrollbar{width:8px; height:8px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--border); border-radius:8px;}
+  .nav-item{color:var(--text-secondary); transition:all .15s ease; border-left:2px solid transparent;}
+  .nav-item:hover{color:var(--text-primary); background:var(--surface-2);}
+  .nav-item.active{color:var(--text-primary); background:var(--accent-soft); border-left-color:var(--accent);}
+  .nav-item.active svg{color:var(--accent);}
+  .card{background:var(--surface); border:1px solid var(--border-soft); border-radius:14px;}
+  .view{display:none;} .view.active{display:block; animation:fadein .25s ease;}
+  @keyframes fadein{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+  .badge{font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; padding:2px 8px; border-radius:999px; display:inline-flex; align-items:center; gap:5px; text-transform:uppercase;}
+  .dot{width:6px; height:6px; border-radius:999px; display:inline-block;}
+  .sev-critical{color:var(--critical); background:var(--critical-soft);}
+  .sev-high{color:var(--high); background:var(--high-soft);}
+  .sev-medium{color:var(--medium); background:var(--medium-soft);}
+  .sev-low{color:var(--low); background:var(--low-soft);}
+  .sev-unknown{color:var(--text-muted); background:var(--surface-2);}
+  .row-hover:hover{background:var(--surface-2); cursor:pointer;}
+  .filter-btn{border:1px solid var(--border); color:var(--text-secondary); transition:all .15s ease;}
+  .filter-btn.active{color:var(--bg); background:var(--text-primary); border-color:var(--text-primary);}
+  .filter-btn:hover:not(.active){border-color:var(--text-muted); color:var(--text-primary);}
+  input[type=text]{background:var(--surface-2); border:1px solid var(--border); color:var(--text-primary);}
+  input[type=text]:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);}
+  input[type=text]::placeholder{color:var(--text-muted);}
+  table thead th{color:var(--text-muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.04em;}
+  tbody tr{border-top:1px solid var(--border-soft);}
+  .btn-primary{background:var(--accent); color:#fff;}
+  .btn-primary:disabled{opacity:.45; cursor:not-allowed;}
+  .btn-ghost{background:var(--surface-2); color:var(--text-primary); border:1px solid var(--border);}
+  .spinner{width:14px; height:14px; border-radius:999px; border:2px solid rgba(255,255,255,.25); border-top-color:#fff; animation:spin .7s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .progress-track{background:var(--surface-2); border-radius:999px; overflow:hidden; height:6px;}
+  .progress-fill{background:var(--accent); height:100%; transition:width .4s ease;}
+  .drawer{position:fixed; top:0; right:0; height:100%; width:min(460px,92vw); background:var(--surface); border-left:1px solid var(--border); transform:translateX(100%); transition:transform .25s ease; z-index:50; overflow-y:auto;}
+  .drawer.open{transform:translateX(0);}
+  .backdrop{position:fixed; inset:0; background:rgba(0,0,0,.5); opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:40;}
+  .backdrop.open{opacity:1; pointer-events:auto;}
+  .dropzone{border:1.5px dashed var(--border); transition:all .15s ease;}
+  .dropzone.dragover{border-color:var(--accent); background:var(--accent-soft);}
+</style>
+</head>
+<body class="min-h-screen">
+
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="w-64 shrink-0 border-r flex flex-col justify-between" style="border-color:var(--border-soft); background:var(--surface);">
+    <div>
+      <div class="px-5 py-5 flex items-center gap-2.5 border-b" style="border-color:var(--border-soft);">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:var(--accent-soft);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6l-9-4Z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="leading-tight">
+          <div class="font-display font-semibold text-[14px] tracking-tight">CodeGuard</div>
+          <div class="text-[11px] font-mono" style="color:var(--text-muted);">Source Code Vulnerability Scanner</div>
+        </div>
+      </div>
+
+      <nav class="p-3 space-y-1">
+        <button data-view="overview" class="nav-item active w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13.5px] font-medium">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          Executive Overview
+        </button>
+        <button data-view="dependencies" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13.5px] font-medium">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg>
+          Dependencies
+          <span id="nav-dep-count" class="ml-auto text-[10px] font-mono px-1.5 py-0.5 rounded" style="background:var(--surface-2); color:var(--text-muted);">–</span>
+        </button>
+        <button data-view="vulnerabilities" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13.5px] font-medium">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01" /><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+          Vulnerabilities
+          <span id="nav-vuln-count" class="ml-auto text-[10px] font-mono px-1.5 py-0.5 rounded" style="background:var(--critical-soft); color:var(--critical);">–</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- UPLOAD / SCAN PANEL -->
+    <div class="p-4 border-t space-y-3" style="border-color:var(--border-soft);">
+
+      <div id="scan-flow" class="hidden space-y-3">
+        <div id="new-scan-steps" class="space-y-3">
+          <div class="card p-3.5">
+            <div class="text-[12px] font-semibold mb-2">1. Upload project</div>
+            <label id="dropzone" class="dropzone rounded-lg flex flex-col items-center justify-center gap-1.5 py-4 cursor-pointer text-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+              <span id="dropzone-label" class="text-[11.5px]" style="color:var(--text-muted);">Drop a .zip or click to browse</span>
+              <input id="file-input" type="file" accept=".zip" class="hidden">
+            </label>
+            <button id="upload-btn" disabled class="btn-primary w-full mt-2.5 py-2 rounded-lg text-[12.5px] font-medium disabled:opacity-40">Upload</button>
+          </div>
+
+          <div class="card p-3.5">
+            <div class="text-[12px] font-semibold mb-2">2. Run scan</div>
+            <button id="scan-btn" disabled class="btn-primary w-full py-2 rounded-lg text-[12.5px] font-medium flex items-center justify-center gap-2">
+              <span id="scan-btn-label">Start Scan</span>
+            </button>
+            <div id="scan-progress-wrap" class="hidden mt-2.5 space-y-1.5">
+              <div class="progress-track"><div id="scan-progress-bar" class="progress-fill" style="width:0%"></div></div>
+              <div id="scan-progress-label" class="text-[11px]" style="color:var(--text-muted);"></div>
+            </div>
+            <div id="scan-error" class="hidden mt-2 text-[11.5px] px-2.5 py-2 rounded-lg" style="background:var(--critical-soft); color:var(--critical);"></div>
+          </div>
+        </div>
+
+        <div id="loaded-scan-note" class="hidden text-[11.5px] px-3 py-2.5 rounded-lg space-y-2.5" style="background:var(--surface-2); color:var(--text-muted); border:1px solid var(--border-soft);">
+          <p>Viewing a previous scan. Its report is ready to generate/download below.</p>
+          <div class="flex gap-2">
+            <button id="switch-history-btn" class="btn-ghost flex-1 py-1.5 rounded-lg text-[11.5px] font-medium flex items-center justify-center gap-1.5">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v5h5"/><path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"/><path d="M12 7v5l4 2"/></svg>
+              Previous Scans
+            </button>
+            <button id="switch-new-scan-btn" class="btn-ghost flex-1 py-1.5 rounded-lg text-[11.5px] font-medium flex items-center justify-center gap-1.5">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              New Scan
+            </button>
+          </div>
+        </div>
+
+        <button id="report-btn" disabled class="btn-ghost w-full py-2 rounded-lg text-[12.5px] font-medium">3. Generate Final Report</button>
+        <a id="report-download" class="hidden text-[11.5px] text-center block" style="color:var(--accent);" href="#" target="_blank">Download report (PDF) →</a>
+        <a id="report-download-xlsx" class="hidden text-[11.5px] text-center block" style="color:var(--accent);" href="#" target="_blank">Download report (Excel) →</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 min-w-0 flex flex-col">
+    <header class="h-16 shrink-0 border-b flex items-center justify-between px-6" style="border-color:var(--border-soft); background:var(--bg);">
+      <div>
+        <h1 id="page-title" class="font-display font-semibold text-[17px] tracking-tight">Executive Overview</h1>
+        <p id="page-sub" class="text-[12.5px]" style="color:var(--text-muted);">Upload a project to begin</p>
+      </div>
+      <div id="status-chip" class="hidden sm:flex items-center gap-2 text-[12px] font-mono px-3 py-1.5 rounded-lg" style="background:var(--surface-2); color:var(--text-secondary);">
+        <span id="status-dot" class="dot" style="background:var(--text-muted);"></span>
+        <span id="status-text">No project loaded</span>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6">
+
+      <!-- LANDING CHOICE -->
+      <div id="landing-choice" class="flex h-full flex-col items-center justify-center text-center gap-6">
+        <div>
+          <h2 class="text-[19px] font-display font-semibold mb-1.5">Get started</h2>
+          <p class="text-[13px]" style="color:var(--text-muted);">Reopen a past scan, or upload a new project to scan.</p>
+        </div>
+        <div class="flex gap-4">
+          <button id="landing-history-btn" class="card px-8 py-6 flex flex-col items-center gap-2.5 row-hover" style="min-width:190px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M3 3v5h5"/><path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"/><path d="M12 7v5l4 2"/></svg>
+            <span class="text-[13.5px] font-medium">Previous Scans</span>
+            <span class="text-[11px]" style="color:var(--text-muted);">Reopen a past project</span>
+          </button>
+          <button id="landing-new-scan-btn" class="card px-8 py-6 flex flex-col items-center gap-2.5 row-hover" style="min-width:190px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg>
+            <span class="text-[13.5px] font-medium">New Scan</span>
+            <span class="text-[11px]" style="color:var(--text-muted);">Upload and scan a project</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div id="empty-state" class="hidden h-full flex-col items-center justify-center text-center gap-3" style="color:var(--text-muted);">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+        <p class="text-[14px]">Upload a project .zip in the sidebar, then click <strong>Start Scan</strong>.</p>
+        <p class="text-[12.5px]">Real SBOM → Vulnerability Scan → AI enrichment results will appear here.</p>
+      </div>
+
+      <!-- ============ OVERVIEW VIEW ============ -->
+      <section id="view-overview" class="view space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-5">
+          <div class="card p-6 flex flex-col items-center justify-center">
+            <svg width="180" height="110" viewBox="0 0 180 110">
+              <path d="M15 100 A75 75 0 0 1 165 100" fill="none" stroke="var(--surface-2)" stroke-width="14" stroke-linecap="round"/>
+              <path id="gauge-arc" d="M15 100 A75 75 0 0 1 165 100" fill="none" stroke="var(--high)" stroke-width="14" stroke-linecap="round" stroke-dasharray="176" stroke-dashoffset="176"/>
+            </svg>
+            <div class="-mt-2 text-center">
+              <div class="font-display font-bold text-[34px] leading-none"><span id="gauge-score">–</span><span class="text-[16px]" style="color:var(--text-muted);">/100</span></div>
+              <div id="gauge-badge" class="badge sev-low mt-2">No data</div>
+            </div>
+            <p class="text-[11.5px] text-center mt-3" style="color:var(--text-muted);">Composite score from CVSS severity and volume of outstanding findings.</p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div class="card p-4"><div class="text-[11px] font-medium uppercase tracking-wide" style="color:var(--text-muted);">Dependencies</div><div id="kpi-deps" class="font-display font-semibold text-[26px] mt-1">–</div></div>
+            <div class="card p-4"><div class="text-[11px] font-medium uppercase tracking-wide" style="color:var(--text-muted);">Total Findings</div><div id="kpi-total" class="font-display font-semibold text-[26px] mt-1">–</div></div>
+            <div class="card p-4"><div class="text-[11px] font-medium uppercase tracking-wide" style="color:var(--critical);">Critical</div><div id="kpi-critical" class="font-display font-semibold text-[26px] mt-1" style="color:var(--critical);">–</div></div>
+            <div class="card p-4"><div class="text-[11px] font-medium uppercase tracking-wide" style="color:var(--high);">High</div><div id="kpi-high" class="font-display font-semibold text-[26px] mt-1" style="color:var(--high);">–</div></div>
+            <div class="card p-4"><div class="text-[11px] font-medium uppercase tracking-wide" style="color:var(--medium);">Medium</div><div id="kpi-medium" class="font-display font-semibold text-[26px] mt-1" style="color:var(--medium);">–</div></div>
+            <div class="card p-4"><div class="text-[11px] font-medium uppercase tracking-wide" style="color:var(--low);">Low</div><div id="kpi-low" class="font-display font-semibold text-[26px] mt-1" style="color:var(--low);">–</div></div>
+          </div>
+        </div>
+
+        <div class="card p-5">
+          <h3 class="font-display font-semibold text-[14.5px] mb-1">Severity breakdown</h3>
+          <p class="text-[12px] mb-4" style="color:var(--text-muted);">Live findings from the Snyk scan</p>
+          <div class="h-56"><canvas id="severityChart"></canvas></div>
+        </div>
+
+        <div class="card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-display font-semibold text-[14.5px]">Top priority findings</h3>
+            <button data-goto="vulnerabilities" class="text-[12.5px] font-medium" style="color:var(--accent);">View all →</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-[13px]">
+              <thead><tr><th class="text-left pb-2">CVE</th><th class="text-left pb-2">Package</th><th class="text-left pb-2">Severity</th><th class="text-left pb-2">CVSS</th><th class="text-left pb-2">AI priority</th></tr></thead>
+              <tbody id="top-findings-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ DEPENDENCIES VIEW ============ -->
+      <section id="view-dependencies" class="view space-y-5">
+        <div class="card p-4 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+          <div class="relative w-full sm:w-72">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="absolute left-3 top-1/2 -translate-y-1/2" style="color:var(--text-muted);"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input id="dep-search" type="text" placeholder="Search package name…" class="w-full pl-9 pr-3 py-2 rounded-lg text-[13.5px]">
+          </div>
+          <span class="text-[11.5px] font-mono" style="color:var(--text-muted);">Source: Syft CycloneDX SBOM</span>
+        </div>
+        <div class="card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-[13.5px]">
+              <thead style="background:var(--surface-2);"><tr>
+                <th class="text-left px-4 py-3">Package</th><th class="text-left px-4 py-3">Version</th>
+                <th class="text-left px-4 py-3">Ecosystem</th><th class="text-left px-4 py-3">License</th>
+                <th class="text-left px-4 py-3">Type</th>
+              </tr></thead>
+              <tbody id="dep-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ VULNERABILITIES VIEW ============ -->
+      <section id="view-vulnerabilities" class="view space-y-5">
+        <div class="card p-4 flex flex-col gap-3">
+          <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+            <div class="relative w-full sm:w-72">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="absolute left-3 top-1/2 -translate-y-1/2" style="color:var(--text-muted);"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <input id="vuln-search" type="text" placeholder="Search CVE or package…" class="w-full pl-9 pr-3 py-2 rounded-lg text-[13.5px]">
+            </div>
+            <span class="text-[11.5px] font-mono" style="color:var(--text-muted);">Snyk + AI enrichment</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button class="filter-btn active px-3 py-1.5 rounded-full text-[12.5px] font-medium" data-sev="all">All</button>
+            <button class="filter-btn px-3 py-1.5 rounded-full text-[12.5px] font-medium" data-sev="critical">Critical</button>
+            <button class="filter-btn px-3 py-1.5 rounded-full text-[12.5px] font-medium" data-sev="high">High</button>
+            <button class="filter-btn px-3 py-1.5 rounded-full text-[12.5px] font-medium" data-sev="medium">Medium</button>
+            <button class="filter-btn px-3 py-1.5 rounded-full text-[12.5px] font-medium" data-sev="low">Low</button>
+            <button id="sort-priority" class="ml-auto filter-btn active px-3 py-1.5 rounded-full text-[12.5px] font-medium">Sort by AI Priority</button>
+            <button id="sort-cvss" class="filter-btn px-3 py-1.5 rounded-full text-[12.5px] font-medium">Sort by CVSS</button>
+          </div>
+        </div>
+        <div class="card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-[13.5px]">
+              <thead style="background:var(--surface-2);"><tr>
+                <th class="text-left px-4 py-3">CVE / SNYK</th><th class="text-left px-4 py-3">Package</th>
+                <th class="text-left px-4 py-3">Severity</th><th class="text-left px-4 py-3">CVSS</th>
+                <th class="text-left px-4 py-3">AI priority</th><th class="text-left px-4 py-3">Fix</th>
+              </tr></thead>
+              <tbody id="vuln-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- DETAILS DRAWER -->
+<div id="backdrop" class="backdrop"></div>
+<div id="drawer" class="drawer p-6">
+  <button id="drawer-close" class="mb-4 text-[12.5px]" style="color:var(--text-muted);">← Close</button>
+  <div id="drawer-content" class="space-y-4 text-[13.5px]"></div>
+</div>
+
+<!-- PREVIOUS SCANS MODAL -->
+<div id="history-backdrop" class="backdrop"></div>
+<div id="history-modal" class="hidden fixed inset-0 z-50 items-center justify-center p-6">
+  <div class="card w-full max-w-lg max-h-[80vh] overflow-y-auto p-5">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-display font-semibold text-[15px]">Previous Scans</h3>
+      <button id="history-close" class="text-[12.5px]" style="color:var(--text-muted);">✕ Close</button>
+    </div>
+    <div id="history-list" class="space-y-2"></div>
+  </div>
+</div>
+
+<script>
+const sevColorVar = { critical:"var(--critical)", high:"var(--high)", medium:"var(--medium)", low:"var(--low)", unknown:"var(--text-muted)" };
+let jobId = null;
+let selectedFile = null;
+let latestResults = null;
+let activeSev = "all";
+let sortDesc = true;
+let sortMode = "priority"; // "cvss" | "priority" — default: Critical first
+const PRIORITY_RANK = { critical: 4, high: 3, medium: 2, low: 1 };
+let severityChart = null;
+
+/* ---------------- Navigation ---------------- */
+const titles = {
+  overview: ["Executive Overview", "Live scan results"],
+  dependencies: ["Dependencies", "Full software bill of materials"],
+  vulnerabilities: ["Vulnerabilities", "Findings enriched with AI-assisted priority tiering"],
+};
+function showView(name){
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  document.getElementById("view-"+name).classList.add("active");
+  document.querySelectorAll(".nav-item").forEach(n=>n.classList.toggle("active", n.dataset.view===name));
+  document.getElementById("page-title").textContent = titles[name][0];
+  document.getElementById("page-sub").textContent = titles[name][1];
+}
+document.querySelectorAll(".nav-item").forEach(btn=>btn.addEventListener("click", ()=>showView(btn.dataset.view)));
+document.querySelectorAll("[data-goto]").forEach(btn=>btn.addEventListener("click", ()=>showView(btn.dataset.goto)));
+
+/* ---------------- Upload ---------------- */
+const dropzone = document.getElementById("dropzone");
+const fileInput = document.getElementById("file-input");
+const uploadBtn = document.getElementById("upload-btn");
+const scanBtn = document.getElementById("scan-btn");
+const reportBtn = document.getElementById("report-btn");
+
+dropzone.addEventListener("click", ()=>fileInput.click());
+["dragover","dragenter"].forEach(evt=>dropzone.addEventListener(evt, e=>{e.preventDefault(); dropzone.classList.add("dragover");}));
+["dragleave","drop"].forEach(evt=>dropzone.addEventListener(evt, e=>{e.preventDefault(); dropzone.classList.remove("dragover");}));
+dropzone.addEventListener("drop", e=>{
+  const f = e.dataTransfer.files[0];
+  if(f) handleFileSelect(f);
+});
+fileInput.addEventListener("change", e=>{ if(e.target.files[0]) handleFileSelect(e.target.files[0]); });
+
+function handleFileSelect(file){
+  if(!file.name.toLowerCase().endsWith(".zip")){
+    alert("Only .zip files are supported.");
+    return;
+  }
+  selectedFile = file;
+  document.getElementById("dropzone-label").textContent = file.name;
+  uploadBtn.disabled = false;
+}
+
+uploadBtn.addEventListener("click", async ()=>{
+  if(!selectedFile) return;
+  uploadBtn.disabled = true;
+  uploadBtn.innerHTML = '<span class="spinner inline-block align-middle"></span> Uploading…';
+  const formData = new FormData();
+  formData.append("project", selectedFile);
+  try {
+    const res = await fetch("/api/upload", { method:"POST", body: formData });
+    const data = await res.json();
+    if(!res.ok){ throw new Error(data.error || "Upload failed"); }
+    jobId = data.job_id;
+    uploadBtn.textContent = "Uploaded ✓";
+    scanBtn.disabled = false;
+    setStatus("uploaded", `${data.project_name} uploaded`);
+  } catch(err){
+    uploadBtn.disabled = false;
+    uploadBtn.textContent = "Upload";
+    alert(err.message);
+  }
+});
+
+/* ---------------- Scan ---------------- */
+scanBtn.addEventListener("click", async ()=>{
+  if(!jobId) return;
+  scanBtn.disabled = true;
+  document.getElementById("scan-error").classList.add("hidden");
+  document.getElementById("scan-progress-wrap").classList.remove("hidden");
+  try {
+    const res = await fetch(`/api/scan/${jobId}`, { method:"POST" });
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || "Could not start scan");
+    pollStatus();
+  } catch(err){
+    showScanError(err.message);
+  }
+});
+
+function showScanError(msg){
+  const el = document.getElementById("scan-error");
+  el.textContent = msg;
+  el.classList.remove("hidden");
+  scanBtn.disabled = false;
+}
+
+const stageLabels = {
+  queued: "Queued…",
+  generating_sbom: "Generating SBOM with Syft…",
+  scanning_vulnerabilities: "Scanning dependencies with Snyk…",
+  enriching_ai: "Enriching findings with AI analysis…",
+  completed: "Scan complete",
+  error: "Scan failed",
+};
+const stageProgress = { queued:5, generating_sbom:20, scanning_vulnerabilities:40, enriching_ai:60, completed:100, error:0 };
+
+function setStatus(stage, text){
+  document.getElementById("status-chip").classList.remove("hidden");
+  document.getElementById("status-text").textContent = text || stageLabels[stage] || stage;
+  const dot = document.getElementById("status-dot");
+  dot.style.background = stage === "error" ? "var(--critical)" : stage === "completed" ? "var(--low)" : "var(--accent)";
+}
+
+async function pollStatus(){
+  if(!jobId) return;
+  const res = await fetch(`/api/status/${jobId}`);
+  const s = await res.json();
+  if(!res.ok) return;
+
+  setStatus(s.stage, s.message);
+  const base = stageProgress[s.stage] ?? 10;
+  let pct = base;
+  if(s.stage === "enriching_ai" && s.ai_progress && s.ai_progress.total){
+    pct = 60 + Math.round((s.ai_progress.done / s.ai_progress.total) * 40);
+  }
+  document.getElementById("scan-progress-bar").style.width = pct + "%";
+  document.getElementById("scan-progress-label").textContent = s.message || "";
+
+  if(s.stage === "error"){
+    showScanError(s.message);
+    return;
+  }
+  if(s.stage === "completed"){
+    document.getElementById("scan-progress-label").textContent = "Done.";
+    scanBtn.disabled = false;
+    document.getElementById("scan-btn-label").textContent = "Re-run Scan";
+    reportBtn.disabled = false;
+    await loadResults();
+    return;
+  }
+  setTimeout(pollStatus, 1500);
+}
+
+/* ---------------- Results rendering ---------------- */
+async function loadResults(){
+  const res = await fetch(`/api/results/${jobId}`);
+  const data = await res.json();
+  if(!res.ok) return;
+  latestResults = data;
+
+  document.getElementById("empty-state").classList.add("hidden");
+  document.getElementById("empty-state").classList.remove("flex");
+  showView("overview");
+
+  const sc = data.severity_counts;
+  document.getElementById("kpi-deps").textContent = data.sbom_summary.total_dependencies;
+  document.getElementById("kpi-total").textContent = sc.total;
+  document.getElementById("kpi-critical").textContent = sc.critical;
+  document.getElementById("kpi-high").textContent = sc.high;
+  document.getElementById("kpi-medium").textContent = sc.medium;
+  document.getElementById("kpi-low").textContent = sc.low;
+  document.getElementById("nav-dep-count").textContent = data.sbom_summary.total_dependencies;
+  document.getElementById("nav-vuln-count").textContent = sc.total;
+
+  const score = Math.min(100, sc.critical*12 + sc.high*6 + sc.medium*2 + sc.low*1);
+  document.getElementById("gauge-score").textContent = score;
+  const gaugeBadge = document.getElementById("gauge-badge");
+  const arc = document.getElementById("gauge-arc");
+  const dash = 176 - (score/100)*176;
+  arc.setAttribute("stroke-dashoffset", dash);
+  if(score >= 60){ arc.style.stroke = "var(--critical)"; gaugeBadge.className="badge sev-critical mt-2"; gaugeBadge.textContent="High Risk"; }
+  else if(score >= 30){ arc.style.stroke = "var(--high)"; gaugeBadge.className="badge sev-high mt-2"; gaugeBadge.textContent="Elevated Risk"; }
+  else { arc.style.stroke = "var(--low)"; gaugeBadge.className="badge sev-low mt-2"; gaugeBadge.textContent="Low Risk"; }
+
+  try { renderChart(sc); } catch(err){ console.error("renderChart failed:", err); }
+  try { renderTopFindings(data.findings); } catch(err){ console.error("renderTopFindings failed:", err); }
+  try { renderDependencies(data.sbom_summary.dependencies); } catch(err){ console.error("renderDependencies failed:", err); }
+  try { renderVulns(data.findings); } catch(err){ console.error("renderVulns failed:", err); }
+}
+
+function renderChart(sc){
+  const ctx = document.getElementById("severityChart");
+  if(typeof Chart === "undefined"){
+    ctx.parentElement.innerHTML = '<p class="text-[12.5px] flex items-center justify-center h-full" style="color:var(--text-muted);">Chart.js failed to load (check your internet connection) — other data below is unaffected.</p>';
+    return;
+  }
+  if(severityChart) severityChart.destroy();
+  severityChart = new Chart(ctx, {
+    type: "doughnut",
+    data: { labels:["Critical","High","Medium","Low"], datasets:[{ data:[sc.critical, sc.high, sc.medium, sc.low], backgroundColor:["#f14e63","#f2924a","#e8c14a","#43bd8c"], borderColor:"#10151f", borderWidth:3, hoverOffset:6 }] },
+    options: { maintainAspectRatio:false, cutout:"68%", plugins:{ legend:{ position:"bottom", labels:{ color:"#8d99b5", font:{family:"Inter", size:12}, padding:16, usePointStyle:true, pointStyle:"circle" } } } }
+  });
+}
+
+function sevBadge(sev){
+  const key = (sev||"unknown").toLowerCase();
+  return `<span class="badge sev-${key}"><span class="dot" style="background:${sevColorVar[key]||sevColorVar.unknown}"></span>${sev||"Unknown"}</span>`;
+}
+
+function renderTopFindings(findings){
+  const top = [...findings].sort((a,b)=>(b.cvss||0)-(a.cvss||0)).slice(0,5);
+  document.getElementById("top-findings-body").innerHTML = top.map(v=>`
+    <tr class="row-hover" onclick='openDrawer(${JSON.stringify(v).replace(/'/g,"&apos;")})'>
+      <td class="py-2.5 font-mono text-[12.5px]">${v.cve||"—"}</td>
+      <td class="py-2.5">${v.package||"—"}</td>
+      <td class="py-2.5">${sevBadge(v.severity)}</td>
+      <td class="py-2.5 font-mono">${v.cvss!=null ? v.cvss.toFixed(1) : "—"}</td>
+      <td class="py-2.5 text-[12.5px]" style="color:${v.ai ? 'var(--text-secondary)' : 'var(--critical)'};" title="${v.ai ? '' : 'AI enrichment failed for this finding — check server logs / GEMINI_API_KEY'}">${v.ai ? v.ai.priority_tier : "Failed"}</td>
+    </tr>`).join("");
+}
+
+function renderDependencies(deps, filter=""){
+  const f = filter.trim().toLowerCase();
+  const rows = deps.filter(d => (d.name||"").toLowerCase().includes(f));
+  document.getElementById("dep-table-body").innerHTML = rows.map(d=>`
+    <tr class="row-hover">
+      <td class="px-4 py-3 font-medium">${d.name}</td>
+      <td class="px-4 py-3 font-mono text-[12.5px]" style="color:var(--text-secondary);">${d.version}</td>
+      <td class="px-4 py-3"><span class="badge" style="background:var(--surface-2); color:var(--text-secondary);">${d.ecosystem}</span></td>
+      <td class="px-4 py-3" style="color:var(--text-secondary);">${d.license}</td>
+      <td class="px-4 py-3" style="color:var(--text-secondary);">${d.dep_type||"unknown"}</td>
+    </tr>`).join("") || `<tr><td colspan="5" class="px-4 py-8 text-center" style="color:var(--text-muted);">No matches</td></tr>`;
+}
+document.getElementById("dep-search").addEventListener("input", e=>{
+  if(latestResults) renderDependencies(latestResults.sbom_summary.dependencies, e.target.value);
+});
+
+function renderVulns(findings){
+  const q = document.getElementById("vuln-search").value.trim().toLowerCase();
+  let rows = findings.filter(v =>
+    (activeSev==="all" || (v.severity||"").toLowerCase()===activeSev) &&
+    ((v.cve||"").toLowerCase().includes(q) || (v.package||"").toLowerCase().includes(q))
+  );
+  if (sortMode === "priority") {
+    rows = rows.sort((a,b)=>{
+      const ra = PRIORITY_RANK[(a.ai && a.ai.priority_tier || "").toLowerCase()] || 0;
+      const rb = PRIORITY_RANK[(b.ai && b.ai.priority_tier || "").toLowerCase()] || 0;
+      const diff = sortDesc ? rb-ra : ra-rb;
+      return diff !== 0 ? diff : (b.cvss||0)-(a.cvss||0); // tiebreak by CVSS desc
+    });
+  } else {
+    rows = rows.sort((a,b)=> sortDesc ? (b.cvss||0)-(a.cvss||0) : (a.cvss||0)-(b.cvss||0));
+  }
+
+  document.getElementById("vuln-table-body").innerHTML = rows.map(v=>`
+    <tr class="row-hover" onclick='openDrawer(${JSON.stringify(v).replace(/'/g,"&apos;")})'>
+      <td class="px-4 py-3 font-mono text-[12.5px]">${v.cve||"—"}</td>
+      <td class="px-4 py-3 font-medium">${v.package||"—"} <span style="color:var(--text-muted);">${v.version||""}</span></td>
+      <td class="px-4 py-3">${sevBadge(v.severity)}</td>
+      <td class="px-4 py-3 font-mono">${v.cvss!=null ? v.cvss.toFixed(1) : "—"}</td>
+      <td class="px-4 py-3 text-[12.5px]" style="color:${v.ai ? 'var(--text-secondary)' : 'var(--critical)'};" title="${v.ai ? '' : 'AI enrichment failed for this finding — check server logs / GEMINI_API_KEY'}">${v.ai ? v.ai.priority_tier : "Failed"}</td>
+      <td class="px-4 py-3 text-[12.5px]" style="color:var(--text-secondary);">${(v.fix_version && v.fix_version.length) ? v.fix_version.join(", ") : "No fix"}</td>
+    </tr>`).join("") || `<tr><td colspan="6" class="px-4 py-8 text-center" style="color:var(--text-muted);">No findings match your filters</td></tr>`;
+}
+document.getElementById("vuln-search").addEventListener("input", ()=>{ if(latestResults) renderVulns(latestResults.findings); });
+document.querySelectorAll(".filter-btn[data-sev]").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".filter-btn[data-sev]").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    activeSev = btn.dataset.sev;
+    if(latestResults) renderVulns(latestResults.findings);
+  });
+});
+document.getElementById("sort-cvss").addEventListener("click", ()=>{
+  sortDesc = (sortMode === "cvss") ? !sortDesc : true;
+  sortMode = "cvss";
+  document.getElementById("sort-cvss").classList.add("active");
+  document.getElementById("sort-priority").classList.remove("active");
+  if(latestResults) renderVulns(latestResults.findings);
+});
+document.getElementById("sort-priority").addEventListener("click", ()=>{
+  sortDesc = (sortMode === "priority") ? !sortDesc : true;
+  sortMode = "priority";
+  document.getElementById("sort-priority").classList.add("active");
+  document.getElementById("sort-cvss").classList.remove("active");
+  if(latestResults) renderVulns(latestResults.findings);
+});
+
+/* ---------------- Details drawer ---------------- */
+const drawer = document.getElementById("drawer");
+const backdrop = document.getElementById("backdrop");
+function openDrawer(v){
+  const ai = v.ai || {};
+  document.getElementById("drawer-content").innerHTML = `
+    <div class="font-mono text-[12px]" style="color:var(--text-muted);">${v.cve||"—"}</div>
+    <div class="font-display font-semibold text-[18px]">${v.package||"—"} <span style="color:var(--text-muted); font-weight:400;">${v.version||""}</span></div>
+    <div class="flex items-center gap-2">${sevBadge(v.severity)} <span class="font-mono text-[12px]" style="color:var(--text-secondary);">CVSS ${v.cvss!=null?v.cvss.toFixed(1):"—"}</span></div>
+    <div><div class="text-[11px] uppercase font-medium mb-1" style="color:var(--text-muted);">Description</div><p style="color:var(--text-secondary);">${v.description||"—"}</p></div>
+    ${ai.explanation ? `<div><div class="text-[11px] uppercase font-medium mb-1" style="color:var(--text-muted);">AI explanation</div><p style="color:var(--text-secondary);">${ai.explanation}</p></div>` : ""}
+    ${ai.banking_context_risk ? `<div><div class="text-[11px] uppercase font-medium mb-1" style="color:var(--text-muted);">Banking impact</div><p style="color:var(--text-secondary);">${ai.banking_context_risk}</p></div>` : ""}
+    ${ai.remediation ? `<div><div class="text-[11px] uppercase font-medium mb-1" style="color:var(--text-muted);">Remediation</div><p style="color:var(--text-secondary);">${ai.remediation}</p></div>` : `<div><div class="text-[11px] uppercase font-medium mb-1" style="color:var(--text-muted);">Fix version(s)</div><p style="color:var(--text-secondary);">${(v.fix_version&&v.fix_version.length)?v.fix_version.join(", "):"No fix published yet"}</p></div>`}
+    ${ai.priority_tier ? `<div><div class="text-[11px] uppercase font-medium mb-1" style="color:var(--text-muted);">AI priority tier</div><p style="color:var(--text-secondary);">${ai.priority_tier}</p></div>` : ""}
+  `;
+  drawer.classList.add("open"); backdrop.classList.add("open");
+}
+document.getElementById("drawer-close").addEventListener("click", closeDrawer);
+backdrop.addEventListener("click", closeDrawer);
+function closeDrawer(){ drawer.classList.remove("open"); backdrop.classList.remove("open"); }
+
+/* ---------------- Previous Scans / New Scan ---------------- */
+const historyModal = document.getElementById("history-modal");
+const historyBackdrop = document.getElementById("history-backdrop");
+
+function stageBadgeClass(stage){
+  if(stage==="completed") return "low";
+  if(stage==="error") return "critical";
+  return "medium";
+}
+function stageBadgeText(stage){
+  return { completed:"Completed", error:"Failed", uploaded:"Uploaded — not scanned" }[stage] || stage || "Unknown";
+}
+
+async function openHistoryPicker(){
+  const list = document.getElementById("history-list");
+  list.innerHTML = `<p class="text-[12.5px]" style="color:var(--text-muted);">Loading…</p>`;
+  openHistory();
+  try {
+    const res = await fetch("/api/jobs");
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || "Could not load previous scans");
+    if(!data.jobs || !data.jobs.length){
+      list.innerHTML = `<p class="text-[12.5px]" style="color:var(--text-muted);">No previous scans yet — upload a project to get started.</p>`;
+      return;
+    }
+    list.innerHTML = data.jobs.map(j => `
+      <button class="w-full text-left p-3 rounded-lg row-hover" style="border:1px solid var(--border-soft);" data-job="${j.job_id}">
+        <div class="flex items-center justify-between gap-2">
+          <span class="font-medium text-[13px] truncate">${j.project_name}</span>
+          <span class="badge sev-${stageBadgeClass(j.stage)} shrink-0">${stageBadgeText(j.stage)}</span>
+        </div>
+        <div class="text-[11px] mt-1 font-mono" style="color:var(--text-muted);">${j.created_at ? new Date(j.created_at).toLocaleString() : ""} · ${j.job_id}</div>
+        ${j.message ? `<div class="text-[11.5px] mt-1 truncate" style="color:var(--text-secondary);">${j.message}</div>` : ""}
+      </button>`).join("");
+    list.querySelectorAll("[data-job]").forEach(btn => {
+      btn.addEventListener("click", () => loadJob(btn.dataset.job));
+    });
+  } catch(err){
+    list.innerHTML = `<p class="text-[12.5px]" style="color:var(--critical);">${err.message}</p>`;
+  }
+}
+
+document.getElementById("landing-history-btn").addEventListener("click", openHistoryPicker);
+document.getElementById("switch-history-btn").addEventListener("click", openHistoryPicker);
+
+function openHistory(){
+  historyModal.classList.remove("hidden");
+  historyModal.classList.add("flex");
+  historyBackdrop.classList.add("open");
+}
+function closeHistory(){
+  historyModal.classList.add("hidden");
+  historyModal.classList.remove("flex");
+  historyBackdrop.classList.remove("open");
+}
+document.getElementById("history-close").addEventListener("click", closeHistory);
+historyBackdrop.addEventListener("click", closeHistory);
+
+async function loadJob(id){
+  closeHistory();
+  jobId = id;
+  selectedFile = null;
+  fileInput.value = "";
+
+  document.getElementById("landing-choice").classList.add("hidden");
+  document.getElementById("landing-choice").classList.remove("flex");
+  document.getElementById("scan-flow").classList.remove("hidden");
+  document.getElementById("new-scan-steps").classList.add("hidden");
+  document.getElementById("loaded-scan-note").classList.remove("hidden");
+
+  document.getElementById("scan-error").classList.add("hidden");
+  document.getElementById("scan-progress-wrap").classList.add("hidden");
+  document.getElementById("report-download").classList.add("hidden");
+  document.getElementById("report-download-xlsx").classList.add("hidden");
+
+  const statusRes = await fetch(`/api/status/${jobId}`);
+  const s = await statusRes.json();
+  if(statusRes.ok){
+    setStatus(s.stage, `${s.project_name || "Project"} — ${s.message || s.stage}`);
+  }
+  reportBtn.disabled = false;
+
+  const resultsRes = await fetch(`/api/results/${jobId}`);
+  if(resultsRes.ok){
+    await loadResults();
+  } else {
+    document.getElementById("empty-state").classList.remove("hidden");
+    document.getElementById("empty-state").classList.add("flex");
+    document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+    reportBtn.disabled = true;
+  }
+}
+
+function startNewScan(){
+  jobId = null;
+  selectedFile = null;
+  latestResults = null;
+  fileInput.value = "";
+
+  document.getElementById("landing-choice").classList.add("hidden");
+  document.getElementById("landing-choice").classList.remove("flex");
+  document.getElementById("scan-flow").classList.remove("hidden");
+  document.getElementById("new-scan-steps").classList.remove("hidden");
+  document.getElementById("loaded-scan-note").classList.add("hidden");
+
+  uploadBtn.disabled = true;
+  uploadBtn.textContent = "Upload";
+  document.getElementById("dropzone-label").textContent = "Drop a .zip or click to browse";
+
+  scanBtn.disabled = true;
+  document.getElementById("scan-btn-label").textContent = "Start Scan";
+  document.getElementById("scan-progress-wrap").classList.add("hidden");
+  document.getElementById("scan-progress-bar").style.width = "0%";
+  document.getElementById("scan-error").classList.add("hidden");
+
+  reportBtn.disabled = true;
+  document.getElementById("report-download").classList.add("hidden");
+  document.getElementById("report-download-xlsx").classList.add("hidden");
+
+  document.getElementById("status-chip").classList.add("hidden");
+  document.getElementById("empty-state").classList.remove("hidden");
+  document.getElementById("empty-state").classList.add("flex");
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+}
+
+document.getElementById("landing-new-scan-btn").addEventListener("click", startNewScan);
+document.getElementById("switch-new-scan-btn").addEventListener("click", startNewScan);
+
+reportBtn.addEventListener("click", async ()=>{
+  if(!jobId) return;
+  reportBtn.disabled = true;
+  reportBtn.innerHTML = '<span class="spinner inline-block align-middle"></span> Generating…';
+  try {
+    const res = await fetch(`/api/report/${jobId}`, { method:"POST" });
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || "Report generation failed");
+    const link = document.getElementById("report-download");
+    link.href = data.download_url;
+    link.classList.remove("hidden");
+    const linkXlsx = document.getElementById("report-download-xlsx");
+    linkXlsx.href = data.download_url_xlsx;
+    linkXlsx.classList.remove("hidden");
+    reportBtn.textContent = "3. Generate Final Report";
+    reportBtn.disabled = false;
+  } catch(err){
+    reportBtn.disabled = false;
+    reportBtn.textContent = "3. Generate Final Report";
+    alert(err.message);
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,563 @@
+[
+  {
+    "package": "jquery",
+    "version": "3.3.1",
+    "cve": "GHSA-jpcq-cgw6-v4j6",
+    "cvss": 6.9,
+    "severity": "Medium",
+    "description": "Potential XSS vulnerability in jQuery",
+    "fix_version": [
+      "3.5.0"
+    ]
+  },
+  {
+    "package": "jquery",
+    "version": "3.3.1",
+    "cve": "GHSA-gxr4-xjj5-5px2",
+    "cvss": 6.9,
+    "severity": "Medium",
+    "description": "Potential XSS vulnerability in jQuery",
+    "fix_version": [
+      "3.5.0"
+    ]
+  },
+  {
+    "package": "jquery",
+    "version": "3.3.1",
+    "cve": "GHSA-6c3j-c64m-qhgq",
+    "cvss": 6.1,
+    "severity": "Medium",
+    "description": "XSS in jQuery as used in Drupal, Backdrop CMS, and other products",
+    "fix_version": [
+      "3.4.0"
+    ]
+  },
+  {
+    "package": "lodash",
+    "version": "4.17.11",
+    "cve": "GHSA-35jh-r3h4-6jhm",
+    "cvss": 7.2,
+    "severity": "High",
+    "description": "Command Injection in lodash",
+    "fix_version": [
+      "4.17.21"
+    ]
+  },
+  {
+    "package": "qs",
+    "version": "6.5.1",
+    "cve": "GHSA-hrpp-h998-j3pp",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "qs vulnerable to Prototype Pollution",
+    "fix_version": [
+      "6.5.3"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-cph5-m8f7-6c5x",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "axios Inefficient Regular Expression Complexity vulnerability",
+    "fix_version": [
+      "0.21.2"
+    ]
+  },
+  {
+    "package": "lodash",
+    "version": "4.17.11",
+    "cve": "GHSA-jf85-cpcp-j695",
+    "cvss": 9.1,
+    "severity": "Critical",
+    "description": "Prototype Pollution in lodash",
+    "fix_version": [
+      "4.17.12"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-42xw-2xvc-qx8m",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "Denial of Service in axios",
+    "fix_version": [
+      "0.18.1"
+    ]
+  },
+  {
+    "package": "minimist",
+    "version": "0.0.8",
+    "cve": "GHSA-xvch-5gv4-984h",
+    "cvss": 9.8,
+    "severity": "Critical",
+    "description": "Prototype Pollution in minimist",
+    "fix_version": [
+      "0.2.4"
+    ]
+  },
+  {
+    "package": "moment",
+    "version": "2.19.3",
+    "cve": "GHSA-8hfj-j24r-96c4",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "Path Traversal: 'dir/../../filename' in moment.locale",
+    "fix_version": [
+      "2.29.2"
+    ]
+  },
+  {
+    "package": "lodash",
+    "version": "4.17.11",
+    "cve": "GHSA-p6mc-m468-83gw",
+    "cvss": 7.4,
+    "severity": "High",
+    "description": "Prototype Pollution in lodash",
+    "fix_version": [
+      "4.17.19"
+    ]
+  },
+  {
+    "package": "lodash",
+    "version": "4.17.11",
+    "cve": "GHSA-29mw-wpgm-hmr9",
+    "cvss": 5.3,
+    "severity": "Medium",
+    "description": "Regular Expression Denial of Service (ReDoS) in lodash",
+    "fix_version": [
+      "4.17.21"
+    ]
+  },
+  {
+    "package": "moment",
+    "version": "2.19.3",
+    "cve": "GHSA-wc69-rhjr-hc9g",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "Moment.js vulnerable to Inefficient Regular Expression Complexity",
+    "fix_version": [
+      "2.29.4"
+    ]
+  },
+  {
+    "package": "lodash",
+    "version": "4.17.11",
+    "cve": "GHSA-r5fr-rjxr-66jc",
+    "cvss": 8.1,
+    "severity": "High",
+    "description": "lodash vulnerable to Code Injection via `_.template` imports key names",
+    "fix_version": [
+      "4.18.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-43fc-jf86-j433",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "Axios is Vulnerable to Denial of Service via __proto__ Key in mergeConfig",
+    "fix_version": [
+      "0.30.3"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-4w2v-q235-vp99",
+    "cvss": 5.9,
+    "severity": "Medium",
+    "description": "Axios vulnerable to Server-Side Request Forgery",
+    "fix_version": [
+      "0.21.1"
+    ]
+  },
+  {
+    "package": "minimist",
+    "version": "0.0.8",
+    "cve": "GHSA-vh95-rmgr-6w4m",
+    "cvss": 5.6,
+    "severity": "Medium",
+    "description": "Prototype Pollution in minimist",
+    "fix_version": [
+      "0.2.1"
+    ]
+  },
+  {
+    "package": "lodash",
+    "version": "4.17.11",
+    "cve": "GHSA-xxjr-mmjv-4gpg",
+    "cvss": 6.5,
+    "severity": "Medium",
+    "description": "Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions",
+    "fix_version": [
+      "4.17.23"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-fvcv-3m26-pcqx",
+    "cvss": 4.8,
+    "severity": "Medium",
+    "description": "Axios has Unrestricted Cloud Metadata Exfiltration via Header Injection Chain",
+    "fix_version": [
+      "0.31.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-pjwm-pj3p-43mv",
+    "cvss": 8.6,
+    "severity": "High",
+    "description": "axios's shouldBypassProxy does not recognize IPv4-mapped IPv6 addresses, allowing NO_PROXY bypass (incomplete fix for CVE-2025-62718)",
+    "fix_version": [
+      "0.32.0"
+    ]
+  },
+  {
+    "package": "path-to-regexp",
+    "version": "0.1.7",
+    "cve": "GHSA-9wv6-86v2-598j",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "path-to-regexp outputs backtracking regular expressions",
+    "fix_version": [
+      "0.1.10"
+    ]
+  },
+  {
+    "package": "body-parser",
+    "version": "1.18.2",
+    "cve": "GHSA-qwcr-r2fm-qrc7",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "body-parser vulnerable to denial of service when url encoding is enabled",
+    "fix_version": [
+      "1.20.3"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-3p68-rc4w-qgx5",
+    "cvss": 4.8,
+    "severity": "Medium",
+    "description": "Axios has a NO_PROXY Hostname Normalization Bypass that Leads to SSRF",
+    "fix_version": [
+      "0.31.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-pf86-5x62-jrwf",
+    "cvss": 7.4,
+    "severity": "High",
+    "description": "Axios: Prototype Pollution Gadgets - Response Tampering, Data Exfiltration, and Request Hijacking",
+    "fix_version": [
+      "0.31.1"
+    ]
+  },
+  {
+    "package": "path-to-regexp",
+    "version": "0.1.7",
+    "cve": "GHSA-rhx6-c78j-4q9w",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "path-to-regexp contains a ReDoS",
+    "fix_version": [
+      "0.1.12"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-jr5f-v2jv-69x6",
+    "cvss": 7.7,
+    "severity": "High",
+    "description": "axios Requests Vulnerable To Possible SSRF and Credential Leakage via Absolute URL",
+    "fix_version": [
+      "0.30.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-p92q-9vqr-4j8v",
+    "cvss": 8.2,
+    "severity": "High",
+    "description": "Axios: Proxy-Authorization Credential Leak to Origin Server Across HTTP-to-HTTPS Redirect in Axios Node.js HTTP Adapter",
+    "fix_version": [
+      "0.32.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-pmwg-cvhr-8vh7",
+    "cvss": 7.2,
+    "severity": "High",
+    "description": "Axios: Incomplete Fix for CVE-2025-62718 \u2014 NO_PROXY Protection Bypassed via RFC 1122 Loopback Subnet (127.0.0.0/8) in Axios 1.15.0",
+    "fix_version": [
+      "0.31.1"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-hfxv-24rg-xrqf",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "Axios: Regular Expression Denial of Service (ReDoS) via Cookie Name Injection",
+    "fix_version": [
+      "0.32.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-62hf-57xw-28j9",
+    "cvss": 7.5,
+    "severity": "Medium",
+    "description": "Axios: unbounded recursion in toFormData causes DoS via deeply nested request data",
+    "fix_version": [
+      "0.31.1"
+    ]
+  },
+  {
+    "package": "express",
+    "version": "4.16.0",
+    "cve": "GHSA-rv95-896h-c2vc",
+    "cvss": 6.1,
+    "severity": "Medium",
+    "description": "Express.js Open Redirect in malformed URLs",
+    "fix_version": [
+      "4.19.2"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-j5f8-grm9-p9fc",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "Axios: Proxy-Authorization header leaks to redirect target when proxy is re-evaluated to direct connection",
+    "fix_version": [
+      "0.32.0"
+    ]
+  },
+  {
+    "package": "path-to-regexp",
+    "version": "0.1.7",
+    "cve": "GHSA-37ch-88jc-xwx2",
+    "cvss": 7.5,
+    "severity": "High",
+    "description": "path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters",
+    "fix_version": [
+      "0.1.13"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-wf5p-g6vw-rhxx",
+    "cvss": 6.5,
+    "severity": "Medium",
+    "description": "Axios Cross-Site Request Forgery Vulnerability",
+    "fix_version": [
+      "0.28.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-w9j2-pvgh-6h63",
+    "cvss": 4.8,
+    "severity": "Medium",
+    "description": "Axios: Authentication Bypass via Prototype Pollution Gadget in `validateStatus` Merge Strategy",
+    "fix_version": [
+      "0.31.1"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-6chq-wfr3-2hj9",
+    "cvss": 7.4,
+    "severity": "High",
+    "description": "Axios: Header Injection via Prototype Pollution",
+    "fix_version": [
+      "0.31.1"
+    ]
+  },
+  {
+    "package": "cookie",
+    "version": "0.3.1",
+    "cve": "GHSA-pxg6-pf52-xh8x",
+    "cvss": null,
+    "severity": "Low",
+    "description": "cookie accepts cookie name, path, and domain with out of bounds characters",
+    "fix_version": [
+      "0.7.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-vf2m-468p-8v99",
+    "cvss": 5.3,
+    "severity": "Medium",
+    "description": "Axios: HTTP adapter streamed responses bypass maxContentLength",
+    "fix_version": [
+      "0.31.1"
+    ]
+  },
+  {
+    "package": "qs",
+    "version": "6.5.1",
+    "cve": "GHSA-6rw7-vpxm-498p",
+    "cvss": 3.7,
+    "severity": "Medium",
+    "description": "qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion",
+    "fix_version": [
+      "6.14.1"
+    ]
+  },
+  {
+    "package": "serve-static",
+    "version": "1.13.0",
+    "cve": "GHSA-cm22-4g7w-348p",
+    "cvss": 5,
+    "severity": "Low",
+    "description": "serve-static vulnerable to template injection that can lead to XSS",
+    "fix_version": [
+      "1.16.0"
+    ]
+  },
+  {
+    "package": "lodash",
+    "version": "4.17.11",
+    "cve": "GHSA-f23m-r3pf-42rh",
+    "cvss": 6.5,
+    "severity": "Medium",
+    "description": "lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`",
+    "fix_version": [
+      "4.18.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-m7pr-hjqh-92cm",
+    "cvss": 6.8,
+    "severity": "Medium",
+    "description": "Axios: no_proxy bypass via IP alias allows SSRF",
+    "fix_version": [
+      "0.31.1"
+    ]
+  },
+  {
+    "package": "send",
+    "version": "0.16.0",
+    "cve": "GHSA-m6fv-jmcg-4jfg",
+    "cvss": 5,
+    "severity": "Low",
+    "description": "send vulnerable to template injection that can lead to XSS",
+    "fix_version": [
+      "0.19.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-5c9x-8gcm-mpgx",
+    "cvss": 5.3,
+    "severity": "Medium",
+    "description": "Axios' HTTP adapter-streamed uploads bypass maxBodyLength when maxRedirects: 0",
+    "fix_version": [
+      "0.31.1"
+    ]
+  },
+  {
+    "package": "express",
+    "version": "4.16.0",
+    "cve": "GHSA-qw6h-vgh9-j6wx",
+    "cvss": 5,
+    "severity": "Low",
+    "description": "express vulnerable to XSS via response.redirect()",
+    "fix_version": [
+      "4.20.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-898c-q2cr-xwhg",
+    "cvss": 4.8,
+    "severity": "Medium",
+    "description": "axios has DoS & Header Injection via Prototype Pollution Read-Side Gadgets in axios merge functions",
+    "fix_version": [
+      "0.32.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-xx6v-rp6x-q39c",
+    "cvss": 5.4,
+    "severity": "Medium",
+    "description": "Axios: XSRF Token Cross-Origin Leakage via Prototype Pollution Gadget in `withXSRFToken` Boolean Coercion",
+    "fix_version": [
+      "0.31.1"
+    ]
+  },
+  {
+    "package": "body-parser",
+    "version": "1.18.2",
+    "cve": "GHSA-v422-hmwv-36x6",
+    "cvss": 3.7,
+    "severity": "Low",
+    "description": "body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement",
+    "fix_version": [
+      "1.20.6"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-xhjh-pmcv-23jw",
+    "cvss": 3.7,
+    "severity": "Low",
+    "description": "Axios: Null Byte Injection via Reverse-Encoding in AxiosURLSearchParams",
+    "fix_version": [
+      "0.31.1"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-7q8q-rj6j-mhjq",
+    "cvss": 6.3,
+    "severity": "Medium",
+    "description": "Axios: Nested axios option objects can consume polluted prototype values",
+    "fix_version": [
+      "0.33.0"
+    ]
+  },
+  {
+    "package": "axios",
+    "version": "0.18.0",
+    "cve": "GHSA-mmx7-hfxf-jppx",
+    "cvss": 6.3,
+    "severity": "Medium",
+    "description": "Axios: Prototype pollution gadgets can alter axios request construction",
+    "fix_version": [
+      "0.33.0"
+    ]
+  }
+]

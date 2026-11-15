@@ -1,0 +1,19 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# App runtime data
+main_application/uploads/*
+main_application/outputs/*
+!main_application/uploads/.gitkeep
+!main_application/outputs/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
